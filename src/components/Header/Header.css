@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../images/header-image.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 576px;
+}

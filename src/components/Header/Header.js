@@ -1,11 +1,11 @@
 import "./Header.css";
-import Navigation from "../Navigation/Navigation";
+import Nav from "../Navigation/Nav";
 import Search from "../Search/Search";
 
 const Header = () => {
   return (
     <header className="header">
-      <Navigation />
+      <Nav />
       <Search />
     </header>
   );
