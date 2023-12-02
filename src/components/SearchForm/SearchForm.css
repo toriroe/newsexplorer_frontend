@@ -1,0 +1,42 @@
+.search__form {
+  position: relative;
+}
+
+.search__form-input {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #1a1b22;
+  padding: 21px 24px;
+  border-radius: 100px;
+  border: none;
+  width: 608px;
+  box-sizing: border-box;
+}
+
+.search__form-input:focus {
+  outline: none;
+}
+
+.search__form-input::placeholder {
+  color: rgba(182, 188, 191, 1);
+}
+
+.search__form-button {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: white;
+  border-radius: 100px;
+  border: none;
+  background-color: #2f71e5;
+  padding: 20px 56px;
+  position: absolute;
+  right: -1px;
+}
+
+.search__form-button {
+  cursor: pointer;
+}

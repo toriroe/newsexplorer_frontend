@@ -1,9 +1,16 @@
 import "./Search.css";
+import SearchForm from "../SearchForm/SearchForm";
 
 const Search = () => {
   return (
-    <div>
-      <h2>Search Section</h2>
+    <div className="search">
+      <h1 className="search__title">What's going on in the world?</h1>
+      <p className="search__subtitle">
+        {" "}
+        Find the latest news on any topic and save them in your personal
+        account.
+      </p>
+      <SearchForm />
     </div>
   );
 };
