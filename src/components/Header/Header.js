@@ -1,11 +1,12 @@
 import "./Header.css";
+import Navigation from "../Navigation/Navigation";
+import Search from "../Search/Search";
 
 const Header = () => {
   return (
-    <header>
-      <div>
-        <h1>Hello world</h1>
-      </div>
+    <header className="header">
+      <Navigation />
+      <Search />
     </header>
   );
 };

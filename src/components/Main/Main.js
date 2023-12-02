@@ -1,12 +1,13 @@
 import "./Main.css";
+import Header from "../Header/Header";
+import About from "../About/About";
 
 const Main = () => {
   return (
-    <header>
-      <div>
-        <h2>Main</h2>
-      </div>
-    </header>
+    <div>
+      <Header />
+      <About />
+    </div>
   );
 };
 

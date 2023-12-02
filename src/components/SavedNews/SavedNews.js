@@ -1,12 +1,12 @@
 import "./SavedNews.css";
+import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
 const SavedNews = () => {
   return (
-    <section>
-      <div>
-        <h3>Saved News</h3>
-      </div>
-    </section>
+    <div>
+      <SavedNewsHeader />
+      <h3>Saved News</h3>
+    </div>
   );
 };
 
