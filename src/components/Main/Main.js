@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import About from "../About/About";
 import Preloader from "../Preloader/Preloader";
 import NoResults from "../NoResults/NoResults";
+import NewsCardList from "../NewsCardList/NewsCardList";
 
 const Main = () => {
   return (
@@ -12,6 +13,7 @@ const Main = () => {
         <div className="content__results">
           <Preloader />
           <NoResults />
+          <NewsCardList />
         </div>
       </section>
       <About />
