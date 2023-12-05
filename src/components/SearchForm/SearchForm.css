@@ -32,11 +32,12 @@
   border-radius: 100px;
   border: none;
   background-color: #2f71e5;
-  padding: 20px 56px;
+  padding: 20.5px 56px;
   position: absolute;
   right: -1px;
+  bottom: -1px;
 }
 
-.search__form-button {
+.search__form-button:hover {
   cursor: pointer;
 }
