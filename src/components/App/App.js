@@ -4,6 +4,7 @@ import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
+import SuccessModal from "../SuccessModal/SuccessModal";
 import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
@@ -36,6 +37,7 @@ function App() {
             </Route>
           </Switch>
           <Footer />
+          <SuccessModal />
         </CurrentUserContext.Provider>
       </CurrentPageContext.Provider>
     </>
