@@ -12,6 +12,7 @@
   font-size: 20px;
   color: white;
   margin: 0;
+  text-decoration: none;
 }
 
 .nav__link {
@@ -115,6 +116,7 @@
   font-size: 20px;
   color: #1a1b22;
   margin: 0;
+  text-decoration: none;
 }
 
 .saved-news__nav-links {

@@ -12,7 +12,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
 
   return isLoggedIn && currentPage === "/" ? (
     <div className="nav">
-      <p className="nav__logo">NewsExplorer</p>
+      <NavLink to="/" className="nav__logo">
+        NewsExplorer
+      </NavLink>
       <nav className="nav__links">
         <NavLink
           to="/"
@@ -37,7 +39,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
     </div>
   ) : isLoggedIn && currentPage === "/saved-news" ? (
     <div className="saved-news__nav">
-      <p className="saved-news__nav-logo">NewsExplorer</p>
+      <NavLink to="/" className="saved-news__nav-logo">
+        NewsExplorer
+      </NavLink>
       <nav className="saved-news__nav-links">
         <NavLink
           exact
@@ -67,7 +71,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
     </div>
   ) : (
     <div className="nav">
-      <p className="nav__logo">NewsExplorer</p>
+      <NavLink to="/" className="nav__logo">
+        NewsExplorer
+      </NavLink>
       <nav className="nav__links">
         <NavLink
           to="/"
