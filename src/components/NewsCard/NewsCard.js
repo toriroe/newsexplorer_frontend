@@ -1,10 +1,45 @@
 import "./NewsCard.css";
 import cardImage from "../../images/card-example-image.png";
+import { CurrentPageContext } from "../../contexts/CurrentPageContext";
+import { useContext, useState } from "react";
 
 const NewsCard = () => {
-  return (
+  const { currentPage } = useContext(CurrentPageContext);
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  return currentPage === "/" ? (
     <div className="card">
       <button className="card__button-bookmark" />
+      <img className="card__image" src={cardImage} />
+      <div className="card__description">
+        <p className="card__date">February 19th, 2019</p>
+        <h3 className="card__title">Nature makes you better</h3>
+        <p className="card__text">
+          We all know how good nature can make us feel. We have known it for
+          millennia: the sound of the ocean, the scents of a forest, the way
+          dappled sunlight dances through leaves.
+        </p>
+        <p className="card__source">NATIONAL GEOGRAPHIC</p>
+      </div>
+    </div>
+  ) : (
+    <div className="card">
+      <div className="card__keyword">Nature</div>
+      <div
+        className={isHovered ? "card__delete-text" : "card__delete-text_hidden"}
+      >
+        Remove from saved
+      </div>
+      <button
+        className="card__button-delete"
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
+      />
       <img className="card__image" src={cardImage} />
       <div className="card__description">
         <p className="card__date">February 19th, 2019</p>

@@ -1,11 +1,12 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
+import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 
 const SavedNews = () => {
   return (
     <div>
       <SavedNewsHeader />
-      <h3>Saved News</h3>
+      <SavedNewsCardList />
     </div>
   );
 };
