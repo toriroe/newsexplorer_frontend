@@ -4,6 +4,7 @@ import cardImage from "../../images/card-example-image.png";
 const NewsCard = () => {
   return (
     <div className="card">
+      <button className="card__button-bookmark" />
       <img className="card__image" src={cardImage} />
       <div className="card__description">
         <p className="card__date">February 19th, 2019</p>

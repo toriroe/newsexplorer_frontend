@@ -1,6 +1,36 @@
 .card {
   width: 400px;
   height: 576px;
+  position: relative;
+}
+
+.card__button-bookmark {
+  background: transparent url(../../images/bookmark-icon.svg) center no-repeat;
+  width: 40px;
+  height: 40px;
+  border: none;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.card__button-bookmark:hover {
+  background: transparent url(../../images/bookmark-icon-hover.svg) center
+    no-repeat;
+  cursor: pointer;
+}
+
+.card__button-bookmark_marked {
+  background: transparent url(../../images/bookmark-icon-clicked.svg) center
+    no-repeat;
+}
+
+.card__button-bookmark_marked:hover {
+  background: transparent url(../../images/bookmark-icon-clicked.svg) center
+    no-repeat;
+  cursor: pointer;
 }
 
 .card__image {
