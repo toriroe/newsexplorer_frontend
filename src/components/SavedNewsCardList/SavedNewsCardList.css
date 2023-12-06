@@ -1,11 +1,11 @@
-.newscards {
-  padding: 62px 0;
+.saved-news__newscards {
+  padding: 80px 7.2vw;
   display: flex;
   flex-direction: column;
   background-color: #f5f6f7;
 }
 
-.newscards__container {
+.saved-news__newscards-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

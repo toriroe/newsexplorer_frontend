@@ -2,6 +2,8 @@
   width: 400px;
   height: 576px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .card__button-bookmark {
@@ -43,6 +45,10 @@
   background-color: #fff;
   border-radius: 0 0 16px 16px;
   padding: 20px 24px 24px;
+  height: 304px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card__date {
