@@ -2,7 +2,8 @@ import "./App.css";
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import SignInModal from "../SignInModal/SignInModal";
 import { Switch, Route } from "react-router-dom";
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-      <ModalWithForm />
+      <SignInModal />
     </>
   );
 }

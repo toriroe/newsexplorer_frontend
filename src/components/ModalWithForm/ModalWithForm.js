@@ -2,12 +2,12 @@ import "./ModalWithForm.css";
 
 const ModalWithForm = ({
   children,
-  buttonText = "Sign in",
-  title = "Sign in",
+  buttonText,
+  title,
   onClose,
-  name = "signin",
+  name,
   onSubmit,
-  altButtonText = "Sign up",
+  altButtonText,
   onAltButtonClick,
 }) => {
   return (
