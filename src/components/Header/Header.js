@@ -2,10 +2,10 @@ import "./Header.css";
 import Nav from "../Navigation/Nav";
 import Search from "../Search/Search";
 
-const Header = (isLoggedIn) => {
+const Header = ({ onSignIn, onSignOut }) => {
   return (
     <header className="header">
-      <Nav />
+      <Nav onSignIn={onSignIn} onSignOut={onSignOut} />
       <Search />
     </header>
   );

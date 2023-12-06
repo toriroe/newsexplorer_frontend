@@ -1,10 +1,10 @@
 import "./SavedNewsHeader.css";
 import Nav from "../Navigation/Nav";
 
-const SavedNewsHeader = () => {
+const SavedNewsHeader = ({ onSignOut }) => {
   return (
     <header className="saved-news__header">
-      <Nav />
+      <Nav onSignOut={onSignOut} />
       <div className="saved-news__header-container">
         <h2 className="saved-news__header-title">Saved Articles</h2>
         <p className="saved-news__header-greeting">

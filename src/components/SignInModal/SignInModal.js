@@ -1,6 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const SignInModal = ({ onClose, handleLogIn, isLoading }) => {
+const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
   //   const [email, setEmail] = useState("");
   //   const handleEmailChange = (evt) => {
   //     setEmail(evt.target.value);
@@ -22,6 +22,7 @@ const SignInModal = ({ onClose, handleLogIn, isLoading }) => {
       onClose={onClose}
       buttonText="Sign in"
       altButtonText="Sign up"
+      onAltClick={onAltClick}
       //   onSubmit={handleSubmit}
     >
       <div className="modal__form-content">

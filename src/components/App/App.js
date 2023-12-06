@@ -2,6 +2,7 @@ import "./App.css";
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
 import SuccessModal from "../SuccessModal/SuccessModal";
@@ -17,6 +18,7 @@ function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [activeModal, setActiveModal] = useState("");
 
   /* ------------------------------- Use Effects ------------------------------ */
 
@@ -24,20 +26,87 @@ function App() {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
+  /* ----------------------------- Modal Handlers ----------------------------- */
+
+  const handleSignInModal = () => {
+    setActiveModal("signin");
+  };
+
+  const handleRegisterModal = () => {
+    setActiveModal("register");
+  };
+
+  const handleSuccessModal = () => {
+    setActiveModal("success");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+
+  /* ----------------------------- Other Handlers ----------------------------- */
+
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+  };
+
+  const handleAltClick = () => {
+    if (activeModal === "signin") {
+      handleCloseModal();
+      handleRegisterModal();
+    } else {
+      handleCloseModal();
+      handleSignInModal();
+    }
+  };
+
   return (
     <>
       <CurrentPageContext.Provider value={{ currentPage }}>
         <CurrentUserContext.Provider value={{ isLoggedIn }}>
           <Switch>
             <Route exact path="/">
-              <Main />
+              <Main onSignIn={handleSignInModal} onSignOut={handleSignOut} />
             </Route>
-            <Route path="/saved-news">
-              <SavedNews />
-            </Route>
+            <ProtectedRoute path="/saved-news">
+              <SavedNews onSignOut={handleSignOut} />
+            </ProtectedRoute>
           </Switch>
           <Footer />
-          <SuccessModal />
+          {activeModal === "signin" && (
+            <SignInModal
+              onClose={handleCloseModal}
+              onAltClick={handleAltClick}
+            />
+          )}
+          {activeModal === "register" && (
+            <RegisterModal
+              onClose={handleCloseModal}
+              onAltClick={handleAltClick}
+            />
+          )}
+          {activeModal === "success" && (
+            <SuccessModal
+              onClose={handleCloseModal}
+              onAltClick={handleAltClick}
+            />
+          )}
         </CurrentUserContext.Provider>
       </CurrentPageContext.Provider>
     </>

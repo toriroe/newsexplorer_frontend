@@ -1,6 +1,6 @@
 import "./SuccessModal.css";
 
-const SuccessModal = ({ onClose }) => {
+const SuccessModal = ({ onClose, onAltClick }) => {
   return (
     <div className="modal">
       <div className="modal__content">
@@ -10,7 +10,9 @@ const SuccessModal = ({ onClose }) => {
           onClick={onClose}
         />
         <h3 className="modal__title">Registration successfully completed!</h3>
-        <button className="modal__button-signin">Sign in</button>
+        <button className="modal__button-signin" onClick={onAltClick}>
+          Sign in
+        </button>
       </div>
     </div>
   );

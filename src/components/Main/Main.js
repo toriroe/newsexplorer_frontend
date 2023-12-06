@@ -5,10 +5,10 @@ import Preloader from "../Preloader/Preloader";
 import NoResults from "../NoResults/NoResults";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-const Main = (isLoggedIn) => {
+const Main = ({ onSignIn, onSignOut }) => {
   return (
     <main className="main">
-      <Header />
+      <Header onSignIn={onSignIn} onSignOut={onSignOut} />
       <section className="content">
         <div className="content__results">
           <Preloader />

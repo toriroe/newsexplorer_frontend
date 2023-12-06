@@ -6,7 +6,7 @@ import { useContext } from "react";
 import signOutDark from "../../images/logout-icon-dark.svg";
 import signOutWhite from "../../images/logout-icon-white.svg";
 
-const Nav = () => {
+const Nav = ({ onSignIn, onSignOut }) => {
   const { currentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
 
@@ -26,7 +26,12 @@ const Nav = () => {
         </NavLink>
         <button className="nav__button-loggedin">
           <p className="nav__username-loggedin">Username</p>
-          <img src={signOutWhite} alt="logout" className="nav__logout" />
+          <img
+            src={signOutWhite}
+            alt="logout"
+            className="nav__logout"
+            onClick={onSignOut}
+          />
         </button>
       </nav>
     </div>
@@ -55,6 +60,7 @@ const Nav = () => {
             src={signOutDark}
             alt="logout"
             className="saved-news__nav-logout"
+            onClick={onSignOut}
           />
         </button>
       </nav>
@@ -70,7 +76,9 @@ const Nav = () => {
         >
           Home
         </NavLink>
-        <button className="nav__button">Sign in</button>
+        <button className="nav__button" onClick={onSignIn}>
+          Sign in
+        </button>
       </nav>
     </div>
   );

@@ -1,6 +1,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ onClose, handleSignUp, isLoading }) => {
+const RegisterModal = ({ onClose, handleSignUp, onAltClick }) => {
   //   const [email, setEmail] = useState("");
   //   const handleEmailChange = (evt) => {
   //     setEmail(evt.target.value);
@@ -27,6 +27,7 @@ const RegisterModal = ({ onClose, handleSignUp, isLoading }) => {
       onClose={onClose}
       buttonText="Sign up"
       altButtonText="Sign in"
+      onAltClick={onAltClick}
       //   onSubmit={handleSubmit}
     >
       <div className="modal__form-content">

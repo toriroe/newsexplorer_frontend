@@ -2,10 +2,10 @@ import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 
-const SavedNews = () => {
+const SavedNews = ({ onSignOut }) => {
   return (
     <div>
-      <SavedNewsHeader />
+      <SavedNewsHeader onSignOut={onSignOut} />
       <SavedNewsCardList />
     </div>
   );

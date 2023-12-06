@@ -8,7 +8,7 @@ const ModalWithForm = ({
   name,
   onSubmit,
   altButtonText,
-  onAltButtonClick,
+  onAltClick,
 }) => {
   return (
     <div className={`modal modal_type_${name}`}>
@@ -29,7 +29,10 @@ const ModalWithForm = ({
             {buttonText}
           </button>
           <p className="modal__text">
-            or <button className="modal__button-alt">{altButtonText}</button>
+            or{" "}
+            <button className="modal__button-alt" onClick={onAltClick}>
+              {altButtonText}
+            </button>
           </p>
         </form>
       </div>
