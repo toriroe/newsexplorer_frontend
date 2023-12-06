@@ -15,7 +15,7 @@ function App() {
 
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   /* ------------------------------- Use Effects ------------------------------ */
 

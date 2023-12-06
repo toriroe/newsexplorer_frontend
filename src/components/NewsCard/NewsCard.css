@@ -98,7 +98,7 @@
   left: 24px;
 }
 
-.card__delete-text {
+.card__popup-text {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -112,7 +112,7 @@
   right: 69px;
 }
 
-.card__delete-text_hidden {
+.card__popup-text_hidden {
   display: none;
 }
 
