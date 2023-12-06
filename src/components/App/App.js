@@ -7,6 +7,7 @@ import SignInModal from "../SignInModal/SignInModal";
 import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   /* ------------------------------- Use Effects ------------------------------ */
 
@@ -21,20 +23,20 @@ function App() {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
 
-  console.log(currentPage);
-
   return (
     <>
       <CurrentPageContext.Provider value={{ currentPage }}>
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route path="/saved-news">
-            <SavedNews />
-          </Route>
-        </Switch>
-        <Footer />
+        <CurrentUserContext.Provider value={{ isLoggedIn }}>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route path="/saved-news">
+              <SavedNews />
+            </Route>
+          </Switch>
+          <Footer />
+        </CurrentUserContext.Provider>
       </CurrentPageContext.Provider>
     </>
   );

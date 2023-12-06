@@ -5,7 +5,7 @@ import Preloader from "../Preloader/Preloader";
 import NoResults from "../NoResults/NoResults";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
-const Main = () => {
+const Main = (isLoggedIn) => {
   return (
     <main className="main">
       <Header />
