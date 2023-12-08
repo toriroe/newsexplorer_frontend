@@ -38,3 +38,41 @@
   background-color: #e8e8e8;
   cursor: pointer;
 }
+
+@media screen and (max-width: 980px) {
+  .newscards {
+    padding: 40px;
+  }
+
+  .newscards__title {
+    margin-bottom: 32px;
+  }
+
+  .newscards__container {
+    gap: 8px;
+  }
+
+  .newscards__button {
+    margin: 32px auto 0;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .newscards {
+    padding: 32px 16px 24px;
+  }
+
+  .newscards__title {
+    margin-bottom: 58px;
+  }
+
+  .newscards__container {
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .newscards__button {
+    margin: 21px auto 0;
+  }
+}

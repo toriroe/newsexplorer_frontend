@@ -68,6 +68,11 @@
   color: #1a1b22;
   margin: 0;
   margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__text {
@@ -78,6 +83,11 @@
   color: #1a1b22;
   margin: 0;
   margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__source {
@@ -86,6 +96,9 @@
   font-size: 16px;
   color: #b6bcbf;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* -------------------------- Saved News Page Card -------------------------- */
@@ -137,4 +150,65 @@
 .card__button-delete:hover {
   background: #fff url(../../images/trash-icon-hover.svg) center no-repeat;
   cursor: pointer;
+}
+
+/* ------------------------------ Media Queries ----------------------------- */
+
+@media screen and (max-width: 980px) {
+  .card {
+    width: 224px;
+    height: 420px;
+  }
+
+  .card__button-bookmark {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__image {
+    height: 150px;
+  }
+
+  .card__description {
+    padding: 16px;
+    height: 270px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    max-height: 82px;
+  }
+
+  .card__text {
+    margin-bottom: 12px;
+    max-height: 88px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .card {
+    width: 288px;
+    height: 440px;
+  }
+
+  .card__image {
+    height: 196px;
+  }
+
+  .card__description {
+    height: 244px;
+  }
+
+  .card__date {
+    margin-bottom: 10px;
+  }
+
+  .card__title {
+    margin-bottom: 14px;
+  }
+
+  .card__text {
+    margin-bottom: 8px;
+  }
 }
