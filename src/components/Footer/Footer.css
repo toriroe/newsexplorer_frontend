@@ -62,6 +62,7 @@
 
   .footer__text {
     grid-area: copyright;
+    margin: 38px 0 2px;
   }
 
   .footer__links {
