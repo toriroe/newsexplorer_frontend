@@ -7,8 +7,9 @@ import signOutDark from "../../images/logout-icon-dark.svg";
 import signOutWhite from "../../images/logout-icon-white.svg";
 
 const Nav = ({ onSignIn, onSignOut }) => {
-  const { currentPage } = useContext(CurrentPageContext);
+  const { currentPage, activeModal } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
+  console.log(activeModal);
 
   return isLoggedIn && currentPage === "/" ? (
     <div className="nav">
@@ -73,10 +74,17 @@ const Nav = ({ onSignIn, onSignOut }) => {
     </div>
   ) : (
     <div className="nav">
-      <NavLink to="/" className="nav__logo">
+      <NavLink
+        to="/"
+        className={`nav__logo ${activeModal !== "" ? "nav__logo_hidden" : ""}`}
+      >
         NewsExplorer
       </NavLink>
-      <button className="nav__menu-button" />
+      <button
+        className={`nav__menu-button ${
+          activeModal !== "" ? "nav__menu-button_hidden" : ""
+        }`}
+      />
       <nav className="nav__links">
         <NavLink
           to="/"

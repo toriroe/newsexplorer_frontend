@@ -1,4 +1,4 @@
-.modal {
+.success-modal {
   position: fixed;
   top: 0;
   right: 0;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__content {
+.success-modal__content {
   background-color: #fff;
   max-width: 430px;
   width: 100%;
@@ -21,7 +21,7 @@
   box-sizing: border-box;
 }
 
-.modal__button-close {
+.success-modal__button-close {
   position: absolute;
   top: -46px;
   right: -46px;
@@ -33,7 +33,7 @@
   padding: 0;
 }
 
-.modal__title {
+.success-modal__title {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 900;
   font-size: 24px;
@@ -41,7 +41,7 @@
   padding-bottom: 14px;
 }
 
-.modal__button-signin {
+.success-modal__button-signin {
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -51,6 +51,28 @@
   padding: 0;
 }
 
-.modal__button-signin:hover {
+.success-modal__button-signin:hover {
   cursor: pointer;
+}
+
+/* ------------------------------ Media Queries ----------------------------- */
+
+@media screen and (max-width: 520px) {
+  .success-modal {
+    align-items: flex-start;
+  }
+
+  .success-modal__content {
+    max-width: 320px;
+    width: 100%;
+    padding: 16px;
+    top: 56px;
+  }
+
+  .success-modal__button-close {
+    top: -32px;
+    right: 16px;
+    width: 16px;
+    height: 16px;
+  }
 }

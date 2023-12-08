@@ -17,7 +17,7 @@ function App() {
 
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState("");
 
   /* ------------------------------- Use Effects ------------------------------ */
@@ -78,11 +78,11 @@ function App() {
 
   return (
     <>
-      <CurrentPageContext.Provider value={{ currentPage }}>
+      <CurrentPageContext.Provider value={{ currentPage, activeModal }}>
         <CurrentUserContext.Provider value={{ isLoggedIn }}>
           <Switch>
             <Route exact path="/">
-              <Main onSignIn={handleSignInModal} onSignOut={handleSignOut} />
+              <Main onSignIn={handleSuccessModal} onSignOut={handleSignOut} />
             </Route>
             <ProtectedRoute path="/saved-news">
               <SavedNews onSignOut={handleSignOut} />

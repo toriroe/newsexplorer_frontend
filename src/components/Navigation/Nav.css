@@ -249,6 +249,10 @@
     padding: 16px;
   }
 
+  .nav__logo_hidden {
+    display: none;
+  }
+
   .nav__menu-button {
     display: flex;
     background: transparent url(../../images/menu-icon-white.svg) center
@@ -256,6 +260,10 @@
     border: none;
     width: 24px;
     height: 24px;
+  }
+
+  .nav__menu-button_hidden {
+    display: none;
   }
 
   .nav__menu-button {
