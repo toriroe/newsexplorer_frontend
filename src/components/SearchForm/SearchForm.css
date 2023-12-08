@@ -57,6 +57,7 @@
 
 @media screen and (max-width: 520px) {
   .search__form {
+    position: static;
     display: flex;
     flex-direction: column;
     width: 288px;

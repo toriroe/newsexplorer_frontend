@@ -51,7 +51,7 @@
   margin: 19px 0 13px 42px;
 }
 
-.nav__button {
+.nav__button:hover {
   cursor: pointer;
 }
 
@@ -249,6 +249,10 @@
     padding: 16px;
   }
 
+  .nav_menu-open {
+    background-color: #1a1b22;
+  }
+
   .nav__logo_hidden {
     display: none;
   }
@@ -261,13 +265,16 @@
     width: 24px;
     height: 24px;
   }
+  .nav__menu-button:hover {
+    cursor: pointer;
+  }
 
   .nav__menu-button_hidden {
     display: none;
   }
 
-  .nav__menu-button {
-    cursor: pointer;
+  .nav__menu-button_open {
+    background: transparent url(../../images/close-icon.svg) center no-repeat;
   }
 
   .nav__links {

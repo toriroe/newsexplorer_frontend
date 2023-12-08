@@ -10,6 +10,7 @@ import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { MobileMenuContext } from "../../contexts/MobileMenuContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   /* ------------------------------- Use Effects ------------------------------ */
 
@@ -45,6 +47,9 @@ function App() {
   /* ----------------------------- Modal Handlers ----------------------------- */
 
   const handleSignInModal = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    }
     setActiveModal("signin");
   };
 
@@ -76,37 +81,49 @@ function App() {
     }
   };
 
+  const openMobileMenu = () => {
+    setMobileMenuOpen(true);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <>
       <CurrentPageContext.Provider value={{ currentPage, activeModal }}>
         <CurrentUserContext.Provider value={{ isLoggedIn }}>
-          <Switch>
-            <Route exact path="/">
-              <Main onSignIn={handleSuccessModal} onSignOut={handleSignOut} />
-            </Route>
-            <ProtectedRoute path="/saved-news">
-              <SavedNews onSignOut={handleSignOut} />
-            </ProtectedRoute>
-          </Switch>
-          <Footer />
-          {activeModal === "signin" && (
-            <SignInModal
-              onClose={handleCloseModal}
-              onAltClick={handleAltClick}
-            />
-          )}
-          {activeModal === "register" && (
-            <RegisterModal
-              onClose={handleCloseModal}
-              onAltClick={handleAltClick}
-            />
-          )}
-          {activeModal === "success" && (
-            <SuccessModal
-              onClose={handleCloseModal}
-              onAltClick={handleAltClick}
-            />
-          )}
+          <MobileMenuContext.Provider
+            value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
+          >
+            <Switch>
+              <Route exact path="/">
+                <Main onSignIn={handleSignInModal} onSignOut={handleSignOut} />
+              </Route>
+              <ProtectedRoute path="/saved-news">
+                <SavedNews onSignOut={handleSignOut} />
+              </ProtectedRoute>
+            </Switch>
+            <Footer />
+            {activeModal === "signin" && (
+              <SignInModal
+                onClose={handleCloseModal}
+                onAltClick={handleAltClick}
+              />
+            )}
+            {activeModal === "register" && (
+              <RegisterModal
+                onClose={handleCloseModal}
+                onAltClick={handleAltClick}
+              />
+            )}
+            {activeModal === "success" && (
+              <SuccessModal
+                onClose={handleCloseModal}
+                onAltClick={handleAltClick}
+              />
+            )}
+          </MobileMenuContext.Provider>
         </CurrentUserContext.Provider>
       </CurrentPageContext.Provider>
     </>

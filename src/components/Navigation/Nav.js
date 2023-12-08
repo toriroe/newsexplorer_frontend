@@ -2,21 +2,40 @@ import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { MobileMenuContext } from "../../contexts/MobileMenuContext";
 import { useContext } from "react";
 import signOutDark from "../../images/logout-icon-dark.svg";
 import signOutWhite from "../../images/logout-icon-white.svg";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 const Nav = ({ onSignIn, onSignOut }) => {
   const { currentPage, activeModal } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
-  console.log(activeModal);
+  const { mobileMenuOpen, openMobileMenu, closeMobileMenu } =
+    useContext(MobileMenuContext);
+
+  console.log(mobileMenuOpen);
+
+  const handleMobileMenu = () => {
+    if (mobileMenuOpen === false) {
+      openMobileMenu();
+    } else {
+      closeMobileMenu();
+    }
+  };
 
   return isLoggedIn && currentPage === "/" ? (
-    <div className="nav">
+    <div className={`nav ${mobileMenuOpen === true ? "nav_menu-open" : ""}`}>
       <NavLink to="/" className="nav__logo">
         NewsExplorer
       </NavLink>
-      <button className="nav__menu-button" />
+      <button
+        className={`nav__menu-button ${
+          mobileMenuOpen === true ? "nav__menu-button_open" : ""
+        }`}
+        onClick={handleMobileMenu}
+      />
+      {mobileMenuOpen && <MobileMenu onSignIn={onSignIn} />}
       <nav className="nav__links">
         <NavLink
           to="/"
@@ -44,7 +63,8 @@ const Nav = ({ onSignIn, onSignOut }) => {
       <NavLink to="/" className="saved-news__nav-logo">
         NewsExplorer
       </NavLink>
-      <button className="saved-news__menu-button" />
+      <button className="saved-news__menu-button" onClick={handleMobileMenu} />
+      {mobileMenuOpen && <MobileMenu onSignIn={onSignIn} />}
       <nav className="saved-news__nav-links">
         <NavLink
           exact
@@ -73,7 +93,7 @@ const Nav = ({ onSignIn, onSignOut }) => {
       </nav>
     </div>
   ) : (
-    <div className="nav">
+    <div className={`nav ${mobileMenuOpen === true ? "nav_menu-open" : ""}`}>
       <NavLink
         to="/"
         className={`nav__logo ${activeModal !== "" ? "nav__logo_hidden" : ""}`}
@@ -83,8 +103,10 @@ const Nav = ({ onSignIn, onSignOut }) => {
       <button
         className={`nav__menu-button ${
           activeModal !== "" ? "nav__menu-button_hidden" : ""
-        }`}
+        } ${mobileMenuOpen === true ? "nav__menu-button_open" : ""}`}
+        onClick={handleMobileMenu}
       />
+      {mobileMenuOpen && <MobileMenu onSignIn={onSignIn} />}
       <nav className="nav__links">
         <NavLink
           to="/"
