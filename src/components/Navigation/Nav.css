@@ -119,6 +119,10 @@
   text-decoration: none;
 }
 
+.saved-news__menu-button {
+  display: none;
+}
+
 .saved-news__nav-links {
   display: flex;
 }
@@ -258,7 +262,24 @@
     cursor: pointer;
   }
 
-  .nav__links_hidden {
+  .nav__links {
+    display: none;
+  }
+
+  .saved-news__nav {
+    padding: 16px;
+  }
+
+  .saved-news__menu-button {
+    display: flex;
+    background: transparent url(../../images/menu-icon-dark.svg) center
+      no-repeat;
+    border: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .saved-news__nav-links {
     display: none;
   }
 }
