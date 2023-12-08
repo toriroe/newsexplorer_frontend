@@ -7,3 +7,15 @@
   background-size: cover;
   max-height: 576px;
 }
+
+@media screen and (max-width: 980px) {
+  .header {
+    max-height: 400px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    max-height: 536px;
+  }
+}
