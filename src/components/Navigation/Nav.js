@@ -15,7 +15,8 @@ const Nav = ({ onSignIn, onSignOut }) => {
       <NavLink to="/" className="nav__logo">
         NewsExplorer
       </NavLink>
-      <nav className="nav__links">
+      <button className="nav__menu-button" />
+      <nav className="nav__links nav__links_hidden">
         <NavLink
           to="/"
           className="nav__link"
@@ -42,7 +43,8 @@ const Nav = ({ onSignIn, onSignOut }) => {
       <NavLink to="/" className="saved-news__nav-logo">
         NewsExplorer
       </NavLink>
-      <nav className="saved-news__nav-links">
+      <button className="nav__menu-button" />
+      <nav className="saved-news__nav-links nav__links_hidden">
         <NavLink
           exact
           to="/"
@@ -74,7 +76,8 @@ const Nav = ({ onSignIn, onSignOut }) => {
       <NavLink to="/" className="nav__logo">
         NewsExplorer
       </NavLink>
-      <nav className="nav__links">
+      <button className="nav__menu-button" />
+      <nav className="nav__links nav__links_hidden">
         <NavLink
           to="/"
           className="nav__link"
