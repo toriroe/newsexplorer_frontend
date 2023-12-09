@@ -251,6 +251,11 @@
 
   .nav_menu-open {
     background-color: #1a1b22;
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%; */
   }
 
   .nav__logo_hidden {

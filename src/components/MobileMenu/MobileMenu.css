@@ -6,6 +6,7 @@
   bottom: 0;
 
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .mobile__content {
@@ -19,6 +20,8 @@
 .mobile__links {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile__link {
@@ -28,7 +31,7 @@
   line-height: 3;
   color: white;
   text-decoration: none;
-  margin-bottom: 22px;
+  max-width: 288px;
 }
 
 .mobile__button {
@@ -42,8 +45,84 @@
   color: white;
   width: 288px;
   padding: 16px 0;
+  margin-top: 22px;
 }
 
 .mobile__button:hover {
   cursor: pointer;
+}
+
+/* -------------------------------- Logged In ------------------------------- */
+
+.mobile__button-loggedin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #1a1b22;
+  padding: 16px 15px;
+  width: 288px;
+  margin-top: 22px;
+}
+
+.mobile__username-loggedin {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0;
+  color: #fff;
+}
+
+.mobile__logout {
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+}
+
+.mobile__logout {
+  cursor: pointer;
+}
+
+/* ------------------------- Logged in & saved-news ------------------------- */
+
+.saved-news__mobile-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  padding: 16px 16px 24px;
+}
+
+.saved-news__mobile-link {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 3;
+  color: #1a1b22;
+  text-decoration: none;
+  max-width: 288px;
+}
+
+.saved-news__mobile-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 100px;
+  border: 1px solid #1a1b22;
+  background-color: transparent;
+  padding: 16px 15px;
+  width: 288px;
+  margin-top: 22px;
+}
+
+.saved-news__mobile-username {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0;
+  color: #1a1b22;
 }

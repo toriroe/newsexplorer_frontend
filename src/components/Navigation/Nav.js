@@ -14,8 +14,6 @@ const Nav = ({ onSignIn, onSignOut }) => {
   const { mobileMenuOpen, openMobileMenu, closeMobileMenu } =
     useContext(MobileMenuContext);
 
-  console.log(mobileMenuOpen);
-
   const handleMobileMenu = () => {
     if (mobileMenuOpen === false) {
       openMobileMenu();
@@ -35,7 +33,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
         }`}
         onClick={handleMobileMenu}
       />
-      {mobileMenuOpen && <MobileMenu onSignIn={onSignIn} />}
+      {mobileMenuOpen && (
+        <MobileMenu onSignIn={onSignIn} onSignOut={onSignOut} />
+      )}
       <nav className="nav__links">
         <NavLink
           to="/"
@@ -64,7 +64,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
         NewsExplorer
       </NavLink>
       <button className="saved-news__menu-button" onClick={handleMobileMenu} />
-      {mobileMenuOpen && <MobileMenu onSignIn={onSignIn} />}
+      {mobileMenuOpen && (
+        <MobileMenu onSignIn={onSignIn} onSignOut={onSignOut} />
+      )}
       <nav className="saved-news__nav-links">
         <NavLink
           exact
@@ -106,7 +108,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
         } ${mobileMenuOpen === true ? "nav__menu-button_open" : ""}`}
         onClick={handleMobileMenu}
       />
-      {mobileMenuOpen && <MobileMenu onSignIn={onSignIn} />}
+      {mobileMenuOpen && (
+        <MobileMenu onSignIn={onSignIn} onSignOut={onSignOut} />
+      )}
       <nav className="nav__links">
         <NavLink
           to="/"

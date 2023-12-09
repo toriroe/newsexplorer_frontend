@@ -1,4 +1,12 @@
 import "./App.css";
+
+/* ---------------------------------- React --------------------------------- */
+
+import { Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+/* ------------------------------- Components ------------------------------- */
+
 import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
@@ -6,21 +14,22 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
 import SuccessModal from "../SuccessModal/SuccessModal";
-import { Switch, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+
+/* -------------------------------- Contexts -------------------------------- */
+
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { MobileMenuContext } from "../../contexts/MobileMenuContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
-  const location = useLocation();
-
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const location = useLocation();
 
   /* ------------------------------- Use Effects ------------------------------ */
 
@@ -68,6 +77,10 @@ function App() {
   /* ----------------------------- Other Handlers ----------------------------- */
 
   const handleSignOut = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    }
+
     setIsLoggedIn(false);
   };
 
