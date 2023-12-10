@@ -59,7 +59,11 @@ const Nav = ({ onSignIn, onSignOut }) => {
       </nav>
     </div>
   ) : isLoggedIn && currentPage === "/saved-news" ? (
-    <div className="saved-news__nav">
+    <div
+      className={`saved-news__nav ${
+        mobileMenuOpen ? "saved-news__nav-open" : ""
+      }`}
+    >
       <NavLink to="/" className="saved-news__nav-logo">
         NewsExplorer
       </NavLink>

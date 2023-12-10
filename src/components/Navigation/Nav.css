@@ -251,11 +251,12 @@
 
   .nav_menu-open {
     background-color: #1a1b22;
-    /* position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
-    width: 100%; */
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .nav__logo_hidden {
@@ -288,6 +289,16 @@
 
   .saved-news__nav {
     padding: 16px;
+  }
+
+  .saved-news__nav-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
   }
 
   .saved-news__menu-button {
