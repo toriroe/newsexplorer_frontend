@@ -1,30 +1,35 @@
 import "./NewsCard.css";
-import cardImage from "../../images/card-example-image.png";
+// import cardImage from "../../images/card-example-image.png";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext, useState } from "react";
 
-const NewsCard = () => {
+const NewsCard = ({ newsData }) => {
   const { currentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   const [isHovered, setIsHovered] = useState(false);
 
+  const formattedDate = new Date(newsData.publishedAt).toLocaleString(
+    "default",
+    {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }
+  );
+
   return isLoggedIn && currentPage === "/" ? (
     <div className="card">
       <button className="card__button-bookmark" />
-      <img className="card__image" src={cardImage} />
+      <img className="card__image" src={newsData.urlToImage} />
       <div className="card__description">
         <div className="card__description-container">
-          <p className="card__date">February 19th, 2019</p>
-          <h3 className="card__title">Nature makes you better</h3>
-          <p className="card__text">
-            We all know how good nature can make us feel. We have known it for
-            millennia: the sound of the ocean, the scents of a forest, the way
-            dappled sunlight dances through leaves.
-          </p>
+          <p className="card__date">{formattedDate}</p>
+          <h3 className="card__title">{newsData.title}</h3>
+          <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">NATIONAL GEOGRAPHIC</p>
+        <p className="card__source">{newsData.source.name}</p>
       </div>
     </div>
   ) : currentPage === "/" ? (
@@ -43,18 +48,14 @@ const NewsCard = () => {
           setIsHovered(false);
         }}
       />
-      <img className="card__image" src={cardImage} />
+      <img className="card__image" src={newsData.urlToImage} />
       <div className="card__description">
         <div className="card__description-container">
-          <p className="card__date">February 19th, 2019</p>
-          <h3 className="card__title">Nature makes you better</h3>
-          <p className="card__text">
-            We all know how good nature can make us feel. We have known it for
-            millennia: the sound of the ocean, the scents of a forest, the way
-            dappled sunlight dances through leaves.
-          </p>
+          <p className="card__date">{formattedDate}</p>
+          <h3 className="card__title">{newsData.title}</h3>
+          <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">NATIONAL GEOGRAPHIC</p>
+        <p className="card__source">{newsData.source.name}</p>
       </div>
     </div>
   ) : (
@@ -74,18 +75,14 @@ const NewsCard = () => {
           setIsHovered(false);
         }}
       />
-      <img className="card__image" src={cardImage} />
+      <img className="card__image" src={newsData.urlToImage} />
       <div className="card__description">
         <div className="card__description-container">
-          <p className="card__date">February 19th, 2019</p>
-          <h3 className="card__title">Nature makes you better</h3>
-          <p className="card__text">
-            We all know how good nature can make us feel. We have known it for
-            millennia: the sound of the ocean, the scents of a forest, the way
-            dappled sunlight dances through leaves.
-          </p>
+          <p className="card__date">{formattedDate}</p>
+          <h3 className="card__title">{newsData.title}</h3>
+          <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">NATIONAL GEOGRAPHIC</p>
+        <p className="card__source">{newsData.source.name}</p>
       </div>
     </div>
   );
