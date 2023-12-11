@@ -2,14 +2,14 @@ import "./SearchForm.css";
 import { useState } from "react";
 
 const SearchForm = ({ handleSearch }) => {
-  const [searchQ, setSearchQ] = useState("");
-  const handleSearchQChange = (evt) => {
-    setSearchQ(evt.target.value);
+  const [keyword, setKeyword] = useState("");
+  const handleKeywordChange = (evt) => {
+    setKeyword(evt.target.value);
   };
 
   const handleSearchSubmit = (evt) => {
     evt.preventDefault();
-    handleSearch({ searchQ });
+    handleSearch({ keyword });
   };
 
   return (
@@ -20,7 +20,7 @@ const SearchForm = ({ handleSearch }) => {
         id="search-item"
         placeholder="Enter topic"
         required
-        onChange={handleSearchQChange}
+        onChange={handleKeywordChange}
       />
       <button className="search__form-button" type="submit">
         Search

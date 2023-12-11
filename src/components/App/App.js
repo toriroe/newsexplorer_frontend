@@ -22,7 +22,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { MobileMenuContext } from "../../contexts/MobileMenuContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
-import { getSearchResults, parseSearchResults } from "../../utils/NewsApi";
+import { getSearchResults } from "../../utils/NewsApi";
 
 function App() {
   /* ------------------------------- Use States ------------------------------- */
@@ -30,6 +30,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   const location = useLocation();
 
@@ -104,10 +105,10 @@ function App() {
     setMobileMenuOpen(false);
   };
 
-  const handleSearch = ({ searchQ }) => {
-    getSearchResults(searchQ)
+  const handleSearch = ({ keyword }) => {
+    getSearchResults(keyword)
       .then((res) => {
-        console.log(res);
+        setSearchResults(res.articles);
       })
       .catch((err) => {
         console.error(err);

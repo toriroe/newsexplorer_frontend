@@ -5,8 +5,8 @@ import {
   previousWeek,
 } from "../utils/constants";
 
-export const getSearchResults = (searchQ) => {
+export const getSearchResults = (keyword) => {
   return fetch(
-    `https://newsapi.org/v2/everything?q=${searchQ}&from=${previousWeek}&to=${currentDate}&pageSize=100&apiKey=${APIkey}`
+    `https://newsapi.org/v2/everything?q=${keyword}&from=${previousWeek}&to=${currentDate}&pageSize=100&apiKey=${APIkey}`
   ).then(checkResponse);
 };
