@@ -12,8 +12,6 @@ const Main = ({ onSignIn, onSignOut, handleSearch, isLoading }) => {
   const { hasSearched } = useContext(HasSearchedContext);
   const { searchResults } = useContext(SearchResultsContext);
 
-  console.log(searchResults.length);
-
   return (
     <main className="main">
       <Header
