@@ -22,6 +22,8 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { MobileMenuContext } from "../../contexts/MobileMenuContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
+import { getSearchResults, parseSearchResults } from "../../utils/NewsApi";
+
 function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
@@ -102,6 +104,17 @@ function App() {
     setMobileMenuOpen(false);
   };
 
+  const handleSearch = (values) => {
+    console.log(values);
+    getSearchResults(values)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <>
       <CurrentPageContext.Provider value={{ currentPage, activeModal }}>
@@ -111,7 +124,11 @@ function App() {
           >
             <Switch>
               <Route exact path="/">
-                <Main onSignIn={handleSignInModal} onSignOut={handleSignOut} />
+                <Main
+                  onSignIn={handleSignInModal}
+                  onSignOut={handleSignOut}
+                  handleSearch={handleSearch}
+                />
               </Route>
               <ProtectedRoute path="/saved-news">
                 <SavedNews onSignOut={handleSignOut} />
