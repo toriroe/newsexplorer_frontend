@@ -104,9 +104,8 @@ function App() {
     setMobileMenuOpen(false);
   };
 
-  const handleSearch = (values) => {
-    console.log(values);
-    getSearchResults(values)
+  const handleSearch = ({ searchQ }) => {
+    getSearchResults(searchQ)
       .then((res) => {
         console.log(res);
       })

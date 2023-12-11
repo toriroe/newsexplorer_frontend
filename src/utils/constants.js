@@ -16,7 +16,6 @@ export const currentDate =
   (currentDateUnformatted.getMonth() + 1).toString().padStart(2, "0") +
   "-" +
   currentDateUnformatted.getDate().toString().padStart(2, "0");
-console.log(currentDate);
 
 const previousWeekUnformatted = new Date();
 previousWeekUnformatted.setDate(currentDateUnformatted.getDate() - 7);
@@ -26,4 +25,3 @@ export const previousWeek =
   (previousWeekUnformatted.getMonth() + 1).toString().padStart(2, "0") +
   "-" +
   previousWeekUnformatted.getDate().toString().padStart(2, "0");
-console.log(previousWeek);
