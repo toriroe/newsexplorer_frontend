@@ -3,7 +3,7 @@ import NoResultsIcon from "../../images/no-results-icon.svg";
 
 const NoResults = () => {
   return (
-    <div className="noresults__container noresults__container_hidden">
+    <div className="noresults__container">
       <img
         className="noresults__image"
         src={NoResultsIcon}
