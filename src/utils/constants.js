@@ -9,7 +9,6 @@ export const checkResponse = (res) => {
 };
 
 const currentDateUnformatted = new Date();
-// export const currentDate = currentDateUnformatted.toISOString();
 export const currentDate =
   currentDateUnformatted.getFullYear() +
   "-" +

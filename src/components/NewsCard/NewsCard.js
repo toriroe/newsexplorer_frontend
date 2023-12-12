@@ -1,5 +1,5 @@
 import "./NewsCard.css";
-// import cardImage from "../../images/card-example-image.png";
+import defaultCardImage from "../../images/header-image.png";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext, useState } from "react";
@@ -22,7 +22,10 @@ const NewsCard = ({ newsData }) => {
   return isLoggedIn && currentPage === "/" ? (
     <div className="card">
       <button className="card__button-bookmark" />
-      <img className="card__image" src={newsData.urlToImage} />
+      <img
+        className="card__image"
+        src={newsData.urlToImage || defaultCardImage}
+      />
       <div className="card__description">
         <div className="card__description-container">
           <p className="card__date">{formattedDate}</p>
@@ -48,7 +51,10 @@ const NewsCard = ({ newsData }) => {
           setIsHovered(false);
         }}
       />
-      <img className="card__image" src={newsData.urlToImage} />
+      <img
+        className="card__image"
+        src={newsData.urlToImage || defaultCardImage}
+      />
       <div className="card__description">
         <div className="card__description-container">
           <p className="card__date">{formattedDate}</p>
@@ -75,7 +81,10 @@ const NewsCard = ({ newsData }) => {
           setIsHovered(false);
         }}
       />
-      <img className="card__image" src={newsData.urlToImage} />
+      <img
+        className="card__image"
+        src={newsData.urlToImage || defaultCardImage}
+      />
       <div className="card__description">
         <div className="card__description-container">
           <p className="card__date">{formattedDate}</p>

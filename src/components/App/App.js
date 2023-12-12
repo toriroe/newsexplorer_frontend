@@ -36,6 +36,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [serverError, setServerError] = useState(false);
 
   const location = useLocation();
 
@@ -120,6 +121,8 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
+        setIsLoading(false);
+        setServerError(true);
       });
   };
 
@@ -139,6 +142,7 @@ function App() {
                       onSignOut={handleSignOut}
                       handleSearch={handleSearch}
                       isLoading={isLoading}
+                      serverError={serverError}
                     />
                   </Route>
                   <ProtectedRoute path="/saved-news">

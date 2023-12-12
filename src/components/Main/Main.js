@@ -3,12 +3,19 @@ import Header from "../Header/Header";
 import About from "../About/About";
 import Preloader from "../Preloader/Preloader";
 import NoResults from "../NoResults/NoResults";
+import SearchError from "../SearchError/SearchError";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { useContext } from "react";
 import { HasSearchedContext } from "../../contexts/HasSearchedContext";
 import { SearchResultsContext } from "../../contexts/SearchResultsContext";
 
-const Main = ({ onSignIn, onSignOut, handleSearch, isLoading }) => {
+const Main = ({
+  onSignIn,
+  onSignOut,
+  handleSearch,
+  isLoading,
+  serverError,
+}) => {
   const { hasSearched } = useContext(HasSearchedContext);
   const { searchResults } = useContext(SearchResultsContext);
 
@@ -27,6 +34,8 @@ const Main = ({ onSignIn, onSignOut, handleSearch, isLoading }) => {
             <NoResults />
           ) : isLoading ? (
             <Preloader />
+          ) : serverError === true ? (
+            <SearchError />
           ) : (
             ""
           )}

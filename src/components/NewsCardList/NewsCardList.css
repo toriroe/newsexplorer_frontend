@@ -34,6 +34,10 @@
   background-color: #fff;
 }
 
+.newscards__button_hidden {
+  display: none;
+}
+
 .newscards__button:hover {
   background-color: #e8e8e8;
   cursor: pointer;
