@@ -82,9 +82,9 @@ function App() {
     setActiveModal("register");
   };
 
-  const handleSuccessModal = () => {
-    setActiveModal("success");
-  };
+  // const handleSuccessModal = () => {
+  //   setActiveModal("success");
+  // };
 
   const handleCloseModal = () => {
     setActiveModal("");

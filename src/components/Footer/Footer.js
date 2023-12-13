@@ -16,13 +16,14 @@ const Footer = () => {
           href="https://tripleten.com/"
           className="footer__link"
           target="_blank"
+          rel="noreferrer"
         >
           TripleTen
         </a>
       </div>
       <ul className="footer__icons">
         <li className="footer__icon-item">
-          <a href="https://github.com/toriroe" target="_blank">
+          <a href="https://github.com/toriroe" target="_blank" rel="noreferrer">
             <img src={gitHub} className="footer__icon" alt="github" />
           </a>
         </li>
@@ -30,6 +31,7 @@ const Footer = () => {
           <a
             href="https://www.linkedin.com/in/tori-roettger723"
             target="_blank"
+            rel="noreferrer"
           >
             <img src={linkedIn} className="footer__icon" alt="linkedIn" />
           </a>

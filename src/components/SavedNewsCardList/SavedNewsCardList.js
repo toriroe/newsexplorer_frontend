@@ -1,5 +1,4 @@
 import "./SavedNewsCardList.css";
-import NewsCard from "../NewsCard/NewsCard";
 
 const SavedNewsCardList = () => {
   return (
