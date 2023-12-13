@@ -12,18 +12,25 @@ const Footer = () => {
         <Link to="/" className="footer__link">
           Home
         </Link>
-        <a href="https://tripleten.com/" className="footer__link">
+        <a
+          href="https://tripleten.com/"
+          className="footer__link"
+          target="_blank"
+        >
           TripleTen
         </a>
       </div>
       <ul className="footer__icons">
         <li className="footer__icon-item">
-          <a href="https://github.com/toriroe">
+          <a href="https://github.com/toriroe" target="_blank">
             <img src={gitHub} className="footer__icon" />
           </a>
         </li>
         <li className="footer__icon-item">
-          <a href="https://www.linkedin.com/in/tori-roettger723">
+          <a
+            href="https://www.linkedin.com/in/tori-roettger723"
+            target="_blank"
+          >
             <img src={linkedIn} className="footer__icon" />
           </a>
         </li>
