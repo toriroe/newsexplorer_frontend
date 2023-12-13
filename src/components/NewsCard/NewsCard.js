@@ -9,6 +9,7 @@ const NewsCard = ({ newsData }) => {
   const { isLoggedIn } = useContext(CurrentUserContext);
 
   const [isHovered, setIsHovered] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const formattedDate = new Date(newsData.publishedAt).toLocaleString(
     "default",
@@ -19,9 +20,22 @@ const NewsCard = ({ newsData }) => {
     }
   );
 
+  const handleBookmarkClick = () => {
+    console.log(isBookmarked);
+    if (isBookmarked) {
+      return setIsBookmarked(false);
+    }
+    setIsBookmarked(true);
+  };
+
   return isLoggedIn && currentPage === "/" ? (
     <div className="card">
-      <button className="card__button-bookmark" />
+      <button
+        className={`card__button-bookmark ${
+          isBookmarked ? "card__button-bookmark_marked" : ""
+        }`}
+        onClick={handleBookmarkClick}
+      />
       <img
         className="card__image"
         src={newsData.urlToImage || defaultCardImage}
