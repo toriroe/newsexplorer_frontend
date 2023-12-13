@@ -41,6 +41,17 @@
   font-weight: 700;
 }
 
+@media screen and (min-width: 1440px) {
+  .saved-news__header {
+    width: 1232px;
+    margin: 0 auto;
+  }
+
+  .saved-news__header-container {
+    padding: 40px 0 56px;
+  }
+}
+
 @media screen and (max-width: 980px) {
   .saved-news__header-container {
     padding: 24px 0 32px 40px;

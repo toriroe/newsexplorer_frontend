@@ -182,6 +182,18 @@
 
 /* ------------------------------ Media Queries ----------------------------- */
 
+@media screen and (min-width: 1440px) {
+  .nav {
+    width: 1232px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .nav__savednews {
+    padding: 0;
+  }
+}
+
 @media screen and (max-width: 980px) {
   .nav {
     padding: 0 40px;

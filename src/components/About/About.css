@@ -34,6 +34,13 @@
   margin-bottom: 26px;
 }
 
+@media screen and (min-width: 1440px) {
+  .about {
+    width: 1232px;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 1060px) and (max-width: 1130px) {
   .about__image {
     max-width: 400px;

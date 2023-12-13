@@ -1,4 +1,3 @@
-import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 

@@ -45,6 +45,13 @@
   cursor: pointer;
 }
 
+@media screen and (min-width: 1440px) {
+  .footer {
+    width: 1232px;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 980px) {
   .footer {
     padding: 24px 40px 18px;
