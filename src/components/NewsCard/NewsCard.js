@@ -47,7 +47,7 @@ const NewsCard = ({ newsData }) => {
           <h3 className="card__title">{newsData.title}</h3>
           <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">{newsData.source.name}</p>
+        <p className="card__source">{newsData.source.name.toUpperCase()}</p>
       </div>
     </div>
   ) : isLoggedIn && currentPage === "/saved-news" ? (
@@ -80,7 +80,7 @@ const NewsCard = ({ newsData }) => {
           <h3 className="card__title">{newsData.title}</h3>
           <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">{newsData.source.name}</p>
+        <p className="card__source">{newsData.source.name.toUpperCase()}</p>
       </div>
     </div>
   ) : (
@@ -112,7 +112,7 @@ const NewsCard = ({ newsData }) => {
           <h3 className="card__title">{newsData.title}</h3>
           <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">{newsData.source.name}</p>
+        <p className="card__source">{newsData.source.name.toUpperCase()}</p>
       </div>
     </div>
   );
