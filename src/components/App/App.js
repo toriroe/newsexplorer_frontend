@@ -25,7 +25,6 @@ import { SearchResultsContext } from "../../contexts/SearchResultsContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 import { getSearchResults } from "../../utils/NewsApi";
-import Search from "../Search/Search";
 
 function App() {
   /* ------------------------------- Use States ------------------------------- */

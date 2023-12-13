@@ -23,7 +23,7 @@ const Footer = () => {
       <ul className="footer__icons">
         <li className="footer__icon-item">
           <a href="https://github.com/toriroe" target="_blank">
-            <img src={gitHub} className="footer__icon" />
+            <img src={gitHub} className="footer__icon" alt="github" />
           </a>
         </li>
         <li className="footer__icon-item">
@@ -31,7 +31,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/tori-roettger723"
             target="_blank"
           >
-            <img src={linkedIn} className="footer__icon" />
+            <img src={linkedIn} className="footer__icon" alt="linkedIn" />
           </a>
         </li>
       </ul>
