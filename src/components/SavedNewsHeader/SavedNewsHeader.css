@@ -58,7 +58,7 @@
   }
 
   .saved-news__header-title {
-    margin-bottom: 16px;
+    margin: 0 0 16px;
     font-size: 14px;
     line-height: 1.7;
   }

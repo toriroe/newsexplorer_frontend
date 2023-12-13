@@ -25,8 +25,7 @@
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   width: 288px;
   border: none;
   border-radius: 80px;
@@ -57,6 +56,7 @@
 
   .newscards__title {
     margin-bottom: 32px;
+    font-size: 30px;
   }
 
   .newscards__container {
@@ -65,6 +65,8 @@
 
   .newscards__button {
     margin: 32px auto 0;
+    padding: 16px 0;
+    width: 240px;
   }
 }
 
@@ -85,5 +87,6 @@
 
   .newscards__button {
     margin: 21px auto 0;
+    width: 288px;
   }
 }
