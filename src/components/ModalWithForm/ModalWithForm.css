@@ -119,10 +119,6 @@
   color: rgba(0, 0, 0, 0.2);
 }
 
-.modal__form-input:focus {
-  outline: none;
-}
-
 /* ------------------------------ Media Queries ----------------------------- */
 
 @media screen and (max-width: 520px) {
