@@ -87,5 +87,6 @@
   .about__text {
     margin: 0;
     margin-top: 24px;
+    align-self: center;
   }
 }
