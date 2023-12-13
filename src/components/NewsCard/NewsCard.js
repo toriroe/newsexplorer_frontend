@@ -50,15 +50,18 @@ const NewsCard = ({ newsData }) => {
         <p className="card__source">{newsData.source.name}</p>
       </div>
     </div>
-  ) : currentPage === "/" ? (
+  ) : isLoggedIn && currentPage === "/saved-news" ? (
     <div className="card">
+      <div className="card__keyword">Nature</div>
       <div
-        className={isHovered ? "card__popup-text" : "card__popup-text_hidden"}
+        className={`card__popup-text ${
+          isHovered ? "" : "card__popup-text_hidden"
+        }`}
       >
-        Sign in to save articles
+        Remove from saved
       </div>
       <button
-        className="card__button-bookmark"
+        className="card__button-delete"
         onMouseEnter={() => {
           setIsHovered(true);
         }}
@@ -82,14 +85,15 @@ const NewsCard = ({ newsData }) => {
     </div>
   ) : (
     <div className="card">
-      <div className="card__keyword">Nature</div>
       <div
-        className={isHovered ? "card__popup-text" : "card__popup-text_hidden"}
+        className={`card__popup-text ${
+          isHovered ? "" : "card__popup-text_hidden"
+        }`}
       >
-        Remove from saved
+        Sign in to save articles
       </div>
       <button
-        className="card__button-delete"
+        className="card__button-bookmark"
         onMouseEnter={() => {
           setIsHovered(true);
         }}
