@@ -67,6 +67,10 @@
   margin-top: 22px;
 }
 
+.mobile__button-loggedin:hover {
+  cursor: pointer;
+}
+
 .mobile__username-loggedin {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
@@ -80,10 +84,6 @@
   width: 24px;
   height: 24px;
   margin-left: 15px;
-}
-
-.mobile__logout {
-  cursor: pointer;
 }
 
 /* ------------------------- Logged in & saved-news ------------------------- */
@@ -116,6 +116,10 @@
   padding: 16px 15px;
   width: 288px;
   margin-top: 22px;
+}
+
+.saved-news__mobile-button:hover {
+  cursor: pointer;
 }
 
 .saved-news__mobile-username {

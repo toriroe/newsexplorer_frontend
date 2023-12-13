@@ -158,6 +158,10 @@
   margin: 14px 0 13px 42px;
 }
 
+.saved-news__nav-button:hover {
+  cursor: pointer;
+}
+
 .saved-news__nav-link_active {
   border-bottom: 3px solid #1a1b22;
 }
@@ -174,10 +178,6 @@
   width: 24px;
   height: 24px;
   margin-left: 15px;
-}
-
-.saved-news__nav-logout:hover {
-  cursor: pointer;
 }
 
 /* ------------------------------ Media Queries ----------------------------- */

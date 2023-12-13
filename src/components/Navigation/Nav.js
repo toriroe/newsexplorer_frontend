@@ -47,14 +47,9 @@ const Nav = ({ onSignIn, onSignOut }) => {
         <NavLink to="/saved-news" className="nav__link-news">
           Saved articles
         </NavLink>
-        <button className="nav__button-loggedin">
+        <button className="nav__button-loggedin" onClick={onSignOut}>
           <p className="nav__username-loggedin">Username</p>
-          <img
-            src={signOutWhite}
-            alt="logout"
-            className="nav__logout"
-            onClick={onSignOut}
-          />
+          <img src={signOutWhite} alt="logout" className="nav__logout" />
         </button>
       </nav>
     </div>
@@ -87,13 +82,12 @@ const Nav = ({ onSignIn, onSignOut }) => {
         >
           Saved articles
         </NavLink>
-        <button className="saved-news__nav-button">
+        <button className="saved-news__nav-button" onClick={onSignOut}>
           <p className="saved-news__nav-username">Username</p>
           <img
             src={signOutDark}
             alt="logout"
             className="saved-news__nav-logout"
-            onClick={onSignOut}
           />
         </button>
       </nav>

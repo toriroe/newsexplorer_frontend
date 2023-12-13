@@ -21,14 +21,9 @@ const MobileMenu = ({ onSignIn, onSignOut }) => {
             Saved articles
           </NavLink>
         </nav>
-        <button className="mobile__button-loggedin">
+        <button className="mobile__button-loggedin" onClick={onSignOut}>
           <p className="mobile__username-loggedin">Username</p>
-          <img
-            src={signOutWhite}
-            alt="logout"
-            className="mobile__logout"
-            onClick={onSignOut}
-          />
+          <img src={signOutWhite} alt="logout" className="mobile__logout" />
         </button>
       </div>
     </div>
@@ -43,14 +38,9 @@ const MobileMenu = ({ onSignIn, onSignOut }) => {
             Saved articles
           </NavLink>
         </nav>
-        <button className="saved-news__mobile-button">
+        <button className="saved-news__mobile-button" onClick={onSignOut}>
           <p className="saved-news__mobile-username">Username</p>
-          <img
-            src={signOutDark}
-            alt="logout"
-            className="mobile__logout"
-            onClick={onSignOut}
-          />
+          <img src={signOutDark} alt="logout" className="mobile__logout" />
         </button>
       </div>
     </div>
