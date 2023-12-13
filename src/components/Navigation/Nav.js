@@ -55,39 +55,42 @@ const Nav = ({ onSignIn, onSignOut }) => {
     </div>
   ) : isLoggedIn && currentPage === "/saved-news" ? (
     <div
-      className={`saved-news__nav ${
-        mobileMenuOpen ? "saved-news__nav-open" : ""
+      className={`nav__savednews ${
+        mobileMenuOpen ? "nav__savednews-open" : ""
       }`}
     >
-      <NavLink to="/" className="saved-news__nav-logo">
+      <NavLink to="/" className="nav__logo-savednews">
         NewsExplorer
       </NavLink>
-      <button className="saved-news__menu-button" onClick={handleMobileMenu} />
+      <button
+        className="nav__menu-button-savednews"
+        onClick={handleMobileMenu}
+      />
       {mobileMenuOpen && (
         <MobileMenu onSignIn={onSignIn} onSignOut={onSignOut} />
       )}
-      <nav className="saved-news__nav-links">
+      <nav className="nav__links-savednews">
         <NavLink
           exact
           to="/"
-          className="saved-news__nav-link"
-          activeClassName="saved-news__nav-link_active"
+          className="nav__link-savednews"
+          activeClassName="nav__link-savednews_active"
         >
           Home
         </NavLink>
         <NavLink
           to="/saved-news"
-          className="saved-news__nav-link"
-          activeClassName="saved-news__nav-link_active"
+          className="nav__link-savednews"
+          activeClassName="nav__link-savednews_active"
         >
           Saved articles
         </NavLink>
-        <button className="saved-news__nav-button" onClick={onSignOut}>
-          <p className="saved-news__nav-username">Username</p>
+        <button className="nav__button-savednews" onClick={onSignOut}>
+          <p className="nav__username-savednews">Username</p>
           <img
             src={signOutDark}
             alt="logout"
-            className="saved-news__nav-logout"
+            className="nav__logout-savednews"
           />
         </button>
       </nav>

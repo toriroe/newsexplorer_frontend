@@ -106,7 +106,7 @@
 
 /* --------------------- Styles for saved-news page nav --------------------- */
 
-.saved-news__nav {
+.nav__savednews {
   padding: 0 104px;
   border-bottom: 1px solid rgb(209, 210, 214);
   display: flex;
@@ -114,7 +114,7 @@
   justify-content: space-between;
 }
 
-.saved-news__nav-logo {
+.nav__logo-savednews {
   font-family: "Roboto Slab", "Times New Roman", serif;
   font-weight: 700;
   font-size: 20px;
@@ -123,15 +123,15 @@
   text-decoration: none;
 }
 
-.saved-news__menu-button {
+.nav__menu-button-savednews {
   display: none;
 }
 
-.saved-news__nav-links {
+.nav__links-savednews {
   display: flex;
 }
 
-.saved-news__nav-link {
+.nav__link-savednews {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -142,7 +142,7 @@
   margin-left: 12px;
 }
 
-.saved-news__nav-button {
+.nav__button-savednews {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -158,15 +158,15 @@
   margin: 14px 0 13px 42px;
 }
 
-.saved-news__nav-button:hover {
+.nav__button-savednews:hover {
   cursor: pointer;
 }
 
-.saved-news__nav-link_active {
+.nav__link-savednews_active {
   border-bottom: 3px solid #1a1b22;
 }
 
-.saved-news__nav-username {
+.nav__username-savednews {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -174,7 +174,7 @@
   margin: 0;
 }
 
-.saved-news__nav-logout {
+.nav__logout-savednews {
   width: 24px;
   height: 24px;
   margin-left: 15px;
@@ -221,28 +221,28 @@
     line-height: 1.5;
   }
 
-  .saved-news__nav {
+  .nav__savednews {
     padding: 0 40px;
   }
 
-  .saved-news__nav-link {
+  .nav__link-savednews {
     font-size: 16px;
     line-height: 1.5;
     padding: 22px 0 20px;
     align-self: center;
   }
 
-  .saved-news__nav-button {
+  .nav__button-savednews {
     padding: 12px 19px;
     margin: 14px 0 12px 16px;
   }
 
-  .saved-news__nav-username {
+  .nav__username-savednews {
     font-size: 16px;
     line-height: 1.5;
   }
 
-  .saved-news__nav-link_active {
+  .nav__link-savednews_active {
     padding: 22px 28px 20px;
     margin-left: 24px;
   }
@@ -291,11 +291,11 @@
     display: none;
   }
 
-  .saved-news__nav {
+  .nav__savednews {
     padding: 16px;
   }
 
-  .saved-news__nav-open {
+  .nav__savednews-open {
     position: fixed;
     top: 0;
     left: 0;
@@ -305,7 +305,7 @@
     background-color: #fff;
   }
 
-  .saved-news__menu-button {
+  .nav__menu-button-savednews {
     display: flex;
     background: transparent url(../../images/menu-icon-dark.svg) center
       no-repeat;
@@ -314,7 +314,7 @@
     height: 24px;
   }
 
-  .saved-news__nav-links {
+  .nav__links-savednews {
     display: none;
   }
 }

@@ -29,17 +29,17 @@ const MobileMenu = ({ onSignIn, onSignOut }) => {
     </div>
   ) : isLoggedIn && currentPage === "/saved-news" ? (
     <div className="mobile">
-      <div className="saved-news__mobile-content">
+      <div className="mobile__content-savednews">
         <nav className="mobile__links">
-          <NavLink to="/" className="saved-news__mobile-link">
+          <NavLink to="/" className="mobile__link-savednews">
             Home
           </NavLink>
-          <NavLink to="/saved-news" className="saved-news__mobile-link">
+          <NavLink to="/saved-news" className="mobile__link-savednews">
             Saved articles
           </NavLink>
         </nav>
-        <button className="saved-news__mobile-button" onClick={onSignOut}>
-          <p className="saved-news__mobile-username">Username</p>
+        <button className="mobile__button-savednews" onClick={onSignOut}>
+          <p className="mobile__username-savednews">Username</p>
           <img src={signOutDark} alt="logout" className="mobile__logout" />
         </button>
       </div>
