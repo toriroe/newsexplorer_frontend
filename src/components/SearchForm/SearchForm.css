@@ -36,6 +36,11 @@
 
 .search__form-button:hover {
   cursor: pointer;
+  background-color: #347eff;
+}
+
+.search__form-button:active {
+  background-color: #2a65cc;
 }
 
 .search__form-invalid {
