@@ -38,6 +38,7 @@ const RegisterModal = ({ onClose, handleSignUp, onAltClick }) => {
             type="email"
             name="email"
             placeholder="Enter email"
+            required
             // value={email}
             // onChange={handleEmailChange}
           />
@@ -49,6 +50,7 @@ const RegisterModal = ({ onClose, handleSignUp, onAltClick }) => {
             type="password"
             name="password"
             placeholder="Enter password"
+            required
             // value={password}
             // onChange={handlePasswordChange}
           />
@@ -62,6 +64,7 @@ const RegisterModal = ({ onClose, handleSignUp, onAltClick }) => {
             minLength="1"
             maxLength="30"
             placeholder="Enter your username"
+            required
             // value={username}
             // onChange={handleUsernameChange}
           />

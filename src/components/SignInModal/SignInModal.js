@@ -34,6 +34,7 @@ const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
             name="email"
             placeholder="Email"
             minLength="1"
+            required
             // value={email}
             // onChange={handleEmailChange}
           />
@@ -46,6 +47,7 @@ const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
             name="password"
             placeholder="Password"
             minLength="1"
+            required
             // value={password}
             // onChange={handlePasswordChange}
           />
