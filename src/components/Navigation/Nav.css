@@ -11,7 +11,7 @@
 }
 
 .nav__logo {
-  font-family: "Roboto Slab", serif;
+  font-family: "Roboto Slab", "Times New Roman", serif;
   font-weight: 700;
   font-size: 20px;
   color: white;
@@ -111,7 +111,7 @@
 }
 
 .saved-news__nav-logo {
-  font-family: "Roboto Slab", serif;
+  font-family: "Roboto Slab", "Times New Roman", serif;
   font-weight: 700;
   font-size: 20px;
   color: #1a1b22;
