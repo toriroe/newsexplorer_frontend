@@ -25,6 +25,7 @@ const NewsCard = ({ newsData }) => {
       <img
         className="card__image"
         src={newsData.urlToImage || defaultCardImage}
+        alt={newsData.url}
       />
       <div className="card__description">
         <div className="card__description-container">
@@ -54,6 +55,7 @@ const NewsCard = ({ newsData }) => {
       <img
         className="card__image"
         src={newsData.urlToImage || defaultCardImage}
+        alt={newsData.url}
       />
       <div className="card__description">
         <div className="card__description-container">
@@ -84,6 +86,7 @@ const NewsCard = ({ newsData }) => {
       <img
         className="card__image"
         src={newsData.urlToImage || defaultCardImage}
+        alt={newsData.url}
       />
       <div className="card__description">
         <div className="card__description-container">

@@ -122,6 +122,7 @@ function App() {
     setIsLoading(true);
     getSearchResults(keyword)
       .then((res) => {
+        console.log(res);
         setSearchResults(res.articles);
         setHasSearched(true);
         setIsLoading(false);

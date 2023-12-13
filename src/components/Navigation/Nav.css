@@ -69,6 +69,10 @@
   margin: 14px 0 13px 64px;
 }
 
+.nav__button-loggedin:hover {
+  cursor: pointer;
+}
+
 .nav__username-loggedin {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
