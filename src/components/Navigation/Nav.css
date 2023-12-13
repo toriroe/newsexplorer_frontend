@@ -260,6 +260,12 @@
   }
 }
 
+@media screen and (min-width: 521px) and (max-width: 600px) {
+  .nav__link-savednews_active {
+    padding: 22px 10px 20px;
+  }
+}
+
 @media screen and (max-width: 520px) {
   .nav {
     padding: 16px;
