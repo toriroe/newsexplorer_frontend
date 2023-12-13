@@ -54,10 +54,18 @@ function App() {
       }
     };
 
+    const handleClickClose = (evt) => {
+      if (evt.target.classList.contains("modal")) {
+        handleCloseModal();
+      }
+    };
+
     document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("click", handleClickClose);
 
     return () => {
       document.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("click", handleClickClose);
     };
   }, [activeModal]);
 
