@@ -4,6 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-bottom: 22px;
 }
 
 .card__button-bookmark {
@@ -37,9 +38,9 @@
 
 .card__image {
   border-radius: 16px 16px 0 0;
-  height: 272px;
   width: 100%;
   object-fit: cover;
+  flex: 1 0 272px;
   overflow: hidden;
 }
 
@@ -47,7 +48,7 @@
   background-color: #fff;
   border-radius: 0 0 16px 16px;
   padding: 0 24px 24px;
-  height: 304px;
+  flex: 0 0 304px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -159,6 +160,7 @@
   .card {
     width: 224px;
     height: 420px;
+    margin-bottom: 32px;
   }
 
   .card__button-bookmark {
@@ -167,12 +169,16 @@
   }
 
   .card__image {
-    height: 150px;
+    flex: 1 0 150px;
   }
 
   .card__description {
     padding: 16px;
-    height: 270px;
+    flex: 0 0 270px;
+  }
+
+  .card__date {
+    margin: 0 0 12px;
   }
 
   .card__title {
@@ -182,7 +188,7 @@
   }
 
   .card__text {
-    margin-bottom: 12px;
+    margin: 0;
     max-height: 88px;
   }
 }
@@ -191,14 +197,20 @@
   .card {
     width: 288px;
     height: 440px;
+    margin: 20px;
+  }
+
+  .card__button-bookmark {
+    top: 16px;
+    right: 16px;
   }
 
   .card__image {
-    height: 196px;
+    flex: 1 0 196px;
   }
 
   .card__description {
-    height: 244px;
+    flex: 0 0 244px;
   }
 
   .card__date {

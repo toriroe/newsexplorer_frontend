@@ -12,7 +12,7 @@ const About = () => {
           Vanilla JS, ReactJS, MongoDB, NodeJS, ExpressJS, and Google Cloud
           Platform.
         </p>
-        <p className="about__description">
+        <p className="about__description about__description-final">
           She was able to learn and gain experience using the technologies
           listed during her time as a student in Tripleten's software
           engineering program. There, she had the opportunity to complete
