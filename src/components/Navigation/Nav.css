@@ -323,7 +323,7 @@
     background-color: #fff;
   }
 
-  .nav__menu-button-savednews {
+  .nav-savednews__menu-button {
     display: flex;
     background: transparent url(../../images/menu-icon-dark.svg) center
       no-repeat;
