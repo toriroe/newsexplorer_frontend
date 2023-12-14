@@ -1,5 +1,5 @@
 .newscards {
-  padding: 80px 7.2vw;
+  padding: 80px 104px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -19,6 +19,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 16px;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .newscards__button {
@@ -45,11 +47,10 @@
 @media screen and (min-width: 1440px) {
   .newscards {
     width: 1232px;
-    margin: 0 auto;
   }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1020px) {
   .newscards {
     padding: 40px;
   }
@@ -70,7 +71,7 @@
   }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 540px) {
   .newscards {
     padding: 32px 16px 24px;
   }
@@ -88,5 +89,11 @@
   .newscards__button {
     margin: 21px auto 0;
     width: 288px;
+  }
+}
+
+@media screen and (min-width: 521px) and (max-width: 540px) {
+  .newscards__title {
+    text-align: center;
   }
 }
