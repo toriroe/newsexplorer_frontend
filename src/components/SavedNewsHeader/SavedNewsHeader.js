@@ -3,16 +3,16 @@ import Nav from "../Navigation/Nav";
 
 const SavedNewsHeader = ({ onSignOut }) => {
   return (
-    <header className="saved-news__header">
+    <header className="savednews-header">
       <Nav onSignOut={onSignOut} />
-      <div className="saved-news__header-container">
-        <h2 className="saved-news__header-title">Saved Articles</h2>
-        <p className="saved-news__header-greeting">
+      <div className="savednews-header__container">
+        <h2 className="savednews-header__title">Saved Articles</h2>
+        <p className="savednews-header__greeting">
           Elise, you have 5 saved articles
         </p>
-        <p className="saved-news__header-keywords">
+        <p className="savednews-header__keywords">
           By keywords:
-          <span className="saved-news__header-keywords-list">
+          <span className="savednews-header__keywords-list">
             {" "}
             Nature, Yellowstone, and 2 others
           </span>

@@ -1,16 +1,16 @@
-.saved-news__header {
+.savednews-header {
   display: flex;
   flex-direction: column;
 }
 
-.saved-news__header-container {
+.savednews-header__container {
   padding: 40px 0 56px 104px;
   display: flex;
   flex-direction: column;
   max-width: 530px;
 }
 
-.saved-news__header-title {
+.savednews-header__title {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -19,7 +19,7 @@
   margin-bottom: 28px;
 }
 
-.saved-news__header-greeting {
+.savednews-header__greeting {
   font-family: "Roboto Slab", "Times New Roman", serif;
   font-size: 40px;
   font-weight: 400;
@@ -28,7 +28,7 @@
   margin-bottom: 30px;
 }
 
-.saved-news__header-keywords {
+.savednews-header__keywords {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -37,33 +37,33 @@
   margin: 0;
 }
 
-.saved-news__header-keywords-list {
+.savednews-header__keywords-list {
   font-weight: 700;
 }
 
 @media screen and (min-width: 1440px) {
-  .saved-news__header {
+  .savednews-header {
     width: 1232px;
     margin: 0 auto;
   }
 
-  .saved-news__header-container {
+  .savednews-header__container {
     padding: 40px 0 56px;
   }
 }
 
 @media screen and (max-width: 980px) {
-  .saved-news__header-container {
+  .savednews-header__container {
     padding: 24px 0 32px 40px;
   }
 
-  .saved-news__header-title {
+  .savednews-header__title {
     margin: 0 0 16px;
     font-size: 14px;
     line-height: 1.7;
   }
 
-  .saved-news__header-greeting {
+  .savednews-header__greeting {
     font-size: 30px;
     line-height: 1.1;
     margin-bottom: 16px;
@@ -72,21 +72,21 @@
 }
 
 @media screen and (max-width: 520px) {
-  .saved-news__header-container {
+  .savednews-header__container {
     padding: 8px 16px 32px;
   }
 
-  .saved-news__header-title {
+  .savednews-header__title {
     font-size: 12px;
     line-height: 2;
   }
 
-  .saved-news__header-greeting {
+  .savednews-header__greeting {
     max-width: 336px;
     margin-bottom: 50px;
   }
 
-  .saved-news__header-keywords {
+  .savednews-header__keywords {
     max-width: 336px;
   }
 }
