@@ -1,0 +1,21 @@
+.savednews-newscards {
+  padding: 80px 7.2vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6f7;
+}
+
+.savednews-newscards__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1440px) {
+  .savednews-newscards__container {
+    width: 1232px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content__results {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6f7;
+}

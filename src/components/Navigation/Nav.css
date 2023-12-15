@@ -1,0 +1,336 @@
+.nav {
+  padding: 0 104px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__menu-button {
+  display: none;
+}
+
+.nav__logo {
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+  margin: 0;
+  text-decoration: none;
+}
+
+.nav__link {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: white;
+  text-decoration: none;
+  padding: 30px 9px 26px;
+}
+
+.nav__links {
+  display: flex;
+}
+
+.nav__link_active {
+  border-bottom: 3px solid white;
+}
+
+.nav__button {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  border-radius: 100px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  width: 176px;
+  padding: 12px 0;
+  margin: 19px 0 13px 42px;
+}
+
+.nav__button:hover {
+  cursor: pointer;
+}
+
+/* --------------------- Styles for main page logged in --------------------- */
+
+.nav__button-loggedin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #1a1b22;
+  padding: 12px 19px;
+  margin: 14px 0 13px 64px;
+}
+
+.nav__button-loggedin:hover {
+  cursor: pointer;
+}
+
+.nav__username-loggedin {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0;
+  color: #fff;
+}
+
+.nav__logout {
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+}
+
+.nav__link-news {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: white;
+  text-decoration: none;
+  padding: 30px 0 26px;
+  margin-left: 66px;
+  color: #b6bcbf;
+}
+
+.nav__link-news:hover {
+  cursor: pointer;
+}
+
+/* --------------------- Styles for saved-news page nav --------------------- */
+
+.nav-savednews {
+  padding: 0 104px;
+  border-bottom: 1px solid rgb(209, 210, 214);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-savednews__logo {
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #1a1b22;
+  margin: 0;
+  text-decoration: none;
+}
+
+.nav-savednews__menu-button {
+  display: none;
+}
+
+.nav-savednews__links {
+  display: flex;
+}
+
+.nav-savednews__link {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #1a1b22;
+  text-decoration: none;
+  padding: 30px 32px 26px;
+  margin-left: 12px;
+}
+
+.nav-savednews__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  border-radius: 100px;
+  border: 1px solid #1a1b22;
+  background-color: transparent;
+  color: #1a1b22;
+  padding: 12px 19px;
+  margin: 14px 0 13px 42px;
+}
+
+.nav-savednews__button:hover {
+  cursor: pointer;
+}
+
+.nav-savednews__link_active {
+  border-bottom: 3px solid #1a1b22;
+}
+
+.nav-savednews__username {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.nav-savednews__logout {
+  margin-left: 15px;
+}
+
+/* ------------------------------ Media Queries ----------------------------- */
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    width: 1232px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .nav-savednews {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .nav {
+    padding: 0 40px;
+  }
+
+  .nav__link {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 22px 3px 20px;
+    align-self: center;
+  }
+
+  .nav__button {
+    margin: 14px 0 12px 16px;
+    padding: 0;
+    font-size: 16px;
+    width: 152px;
+    height: 40px;
+    line-height: 1.3;
+  }
+
+  .nav__link-news {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 22px 3px 20px;
+    margin-left: 16px;
+    align-self: center;
+  }
+
+  .nav__button-loggedin {
+    padding: 12px 19px;
+    margin: 14px 0 12px 16px;
+  }
+
+  .nav__username-loggedin {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .nav-savednews {
+    padding: 0 40px;
+  }
+
+  .nav-savednews__link {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 22px 0 20px;
+    align-self: center;
+  }
+
+  .nav-savednews__button {
+    padding: 12px 19px;
+    margin: 14px 0 12px 16px;
+  }
+
+  .nav-savednews__username {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .nav-savednews__link_active {
+    padding: 22px 28px 20px;
+    margin-left: 24px;
+  }
+}
+
+@media screen and (min-width: 521px) and (max-width: 600px) {
+  .nav-savednews__link_active {
+    padding: 22px 10px 20px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .nav {
+    padding: 16px;
+  }
+
+  .nav_menu-open {
+    background-color: #1a1b22;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav__logo_hidden {
+    display: none;
+  }
+
+  .nav__menu-button {
+    display: flex;
+    background: transparent url(../../images/menu-icon-white.svg) center
+      no-repeat;
+    border: none;
+    width: 24px;
+    height: 24px;
+  }
+  .nav__menu-button:hover {
+    cursor: pointer;
+  }
+
+  .nav__menu-button_hidden {
+    display: none;
+  }
+
+  .nav__menu-button_open {
+    background: transparent url(../../images/close-icon.svg) center no-repeat;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .nav-savednews {
+    padding: 16px;
+  }
+
+  .nav-savednews_open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+  .nav-savednews__menu-button {
+    display: flex;
+    background: transparent url(../../images/menu-icon-dark.svg) center
+      no-repeat;
+    border: none;
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-savednews__links {
+    display: none;
+  }
+}
