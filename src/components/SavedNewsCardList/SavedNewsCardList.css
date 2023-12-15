@@ -1,11 +1,11 @@
-.saved-news__newscards {
+.savednews-newscards {
   padding: 80px 7.2vw;
   display: flex;
   flex-direction: column;
   background-color: #f5f6f7;
 }
 
-.saved-news__newscards-container {
+.savednews-newscards__container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .saved-news__newscards-container {
+  .savednews-newscards__container {
     width: 1232px;
     margin: 0 auto;
   }

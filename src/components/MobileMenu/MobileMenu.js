@@ -40,7 +40,11 @@ const MobileMenu = ({ onSignIn, onSignOut }) => {
         </nav>
         <button className="mobile__button-savednews" onClick={onSignOut}>
           <p className="mobile__username-savednews">Username</p>
-          <img src={signOutDark} alt="logout" className="mobile__logout" />
+          <img
+            src={signOutDark}
+            alt="logout"
+            className="mobile__logout-savednews"
+          />
         </button>
       </div>
     </div>
