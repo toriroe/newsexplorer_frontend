@@ -69,10 +69,9 @@
   }
 
   .about__image {
-    max-width: 272px;
-    height: 272px;
+    max-width: 232px;
+    height: 232px;
     margin-top: 21px;
-    flex: 1 0 272px;
   }
 
   .about__title {
@@ -96,6 +95,8 @@
   .about__image {
     align-self: center;
     margin: 0;
+    max-width: 272px;
+    height: 272px;
     flex: 1 0 272px;
   }
 
