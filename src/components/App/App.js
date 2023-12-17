@@ -24,12 +24,16 @@ import { HasSearchedContext } from "../../contexts/HasSearchedContext";
 import { SearchResultsContext } from "../../contexts/SearchResultsContext";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
+/* ------------------------------ Other Imports ----------------------------- */
+
 import { getSearchResults } from "../../utils/NewsApi";
+import { register, signIn, getContent } from "../../utils/auth";
 
 function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -100,6 +104,25 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  // const handleSignIn = (values) => {
+  //   console.log(values);
+  //   handleCloseModal();
+  // };
+
+  // const handleRegister = (values) => {
+  //   console.log(values);
+  //   register(values)
+  //     .then((user) => {
+  //       setIsLoggedIn(true);
+  //       setCurrentUser(user);
+  //       handleCloseModal();
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     })
+  //     .finally(() => console.log(currentUser));
+  // };
+
   const handleAltClick = () => {
     if (activeModal === "signin") {
       handleCloseModal();
@@ -137,7 +160,7 @@ function App() {
   return (
     <>
       <CurrentPageContext.Provider value={{ currentPage, activeModal }}>
-        <CurrentUserContext.Provider value={{ isLoggedIn }}>
+        <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
           <HasSearchedContext.Provider value={{ hasSearched }}>
             <SearchResultsContext.Provider value={{ searchResults }}>
               <MobileMenuContext.Provider
@@ -162,12 +185,14 @@ function App() {
                   <SignInModal
                     onClose={handleCloseModal}
                     onAltClick={handleAltClick}
+                    onSignIn={handleSignIn}
                   />
                 )}
                 {activeModal === "register" && (
                   <RegisterModal
                     onClose={handleCloseModal}
                     onAltClick={handleAltClick}
+                    onRegister={handleRegister}
                   />
                 )}
                 {activeModal === "success" && (

@@ -1,20 +1,14 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useFormWithValidation } from "../UseForm/useForm";
 
-const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
-  //   const [email, setEmail] = useState("");
-  //   const handleEmailChange = (evt) => {
-  //     setEmail(evt.target.value);
-  //   };
+const SignInModal = ({ onClose, onSignIn, onAltClick }) => {
+  const { values, errors, isValid, handleChange, resetForm } =
+    useFormWithValidation({ email: "", password: "" });
 
-  //   const [password, setPassword] = useState("");
-  //   const handlePasswordChange = (evt) => {
-  //     setPassword(evt.target.value);
-  //   };
-
-  //   const handleSubmit = (evt) => {
-  //     evt.preventDefault();
-  //     handleLogIn({ email, password });
-  //   };
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSignIn(values);
+  };
 
   return (
     <ModalWithForm
@@ -23,7 +17,8 @@ const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
       buttonText="Sign in"
       altButtonText="Sign up"
       onAltClick={onAltClick}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
+      isDisabled={!isValid}
     >
       <div className="modal__form-content">
         <label>
@@ -35,10 +30,11 @@ const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
             placeholder="Email"
             minLength="1"
             required
-            // value={email}
-            // onChange={handleEmailChange}
+            value={values.email}
+            onChange={handleChange}
           />
         </label>
+        <span className="modal__error">{errors.email}</span>
         <label>
           <p className="modal__input-title">Password</p>
           <input
@@ -48,11 +44,12 @@ const SignInModal = ({ onClose, handleLogIn, onAltClick }) => {
             placeholder="Password"
             minLength="1"
             required
-            // value={password}
-            // onChange={handlePasswordChange}
+            value={values.password}
+            onChange={handleChange}
           />
         </label>
       </div>
+      <span className="modal__error">{errors.password}</span>
     </ModalWithForm>
   );
 };
