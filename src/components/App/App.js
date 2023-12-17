@@ -33,7 +33,7 @@ function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -100,22 +100,27 @@ function App() {
     if (mobileMenuOpen) {
       closeMobileMenu();
     }
-    setCurrentUser({});
+    setCurrentUser("");
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
   };
 
   const handleSignIn = (values) => {
-    console.log(values);
-    handleCloseModal();
+    signIn(values)
+      .then((user) => {
+        setCurrentUser(user);
+        localStorage.setItem("jwt", user.token);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => console.log(currentUser));
   };
 
   const handleRegister = (values) => {
-    console.log(values);
     register(values)
       .then((user) => {
-        console.log(user);
-
         setIsLoggedIn(true);
         setCurrentUser(user);
         localStorage.setItem("jwt", user.token);
