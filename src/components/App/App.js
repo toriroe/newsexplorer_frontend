@@ -32,13 +32,14 @@ import { register, signIn, getContent } from "../../utils/auth";
 function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [activeModal, setActiveModal] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState(false);
 
   const location = useLocation();
@@ -106,20 +107,8 @@ function App() {
   };
 
   const handleSignIn = (values) => {
+    setIsSubmitting(true);
     signIn(values)
-      .then((user) => {
-        setCurrentUser(user);
-        localStorage.setItem("jwt", user.token);
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => console.log(currentUser));
-  };
-
-  const handleRegister = (values) => {
-    register(values)
       .then((user) => {
         setIsLoggedIn(true);
         setCurrentUser(user);
@@ -129,7 +118,21 @@ function App() {
       .catch((err) => {
         console.error(err);
       })
-      .finally(() => console.log(currentUser));
+      .finally(() => setIsSubmitting(false));
+  };
+
+  const handleRegister = (values) => {
+    setIsSubmitting(true);
+    register(values)
+      .then((user) => {
+        setCurrentUser(user);
+        localStorage.setItem("jwt", user.token);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   const handleAltClick = () => {
@@ -195,6 +198,7 @@ function App() {
                     onClose={handleCloseModal}
                     onAltClick={handleAltClick}
                     onSignIn={handleSignIn}
+                    isLoading={isSubmitting}
                   />
                 )}
                 {activeModal === "register" && (
@@ -202,6 +206,7 @@ function App() {
                     onClose={handleCloseModal}
                     onAltClick={handleAltClick}
                     onRegister={handleRegister}
+                    isLoading={isSubmitting}
                   />
                 )}
                 {activeModal === "success" && (
