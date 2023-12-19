@@ -4,7 +4,7 @@ import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext, useState } from "react";
 
-const NewsCard = ({ newsData }) => {
+const NewsCard = ({ newsData, onSaveArticle }) => {
   const { currentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
 
@@ -20,12 +20,17 @@ const NewsCard = ({ newsData }) => {
     }
   );
 
-  const handleBookmarkClick = () => {
+  const changeBookmarkImage = () => {
     console.log(isBookmarked);
     if (isBookmarked) {
       return setIsBookmarked(false);
     }
     setIsBookmarked(true);
+  };
+
+  const handleBookmarkClick = () => {
+    changeBookmarkImage();
+    onSaveArticle();
   };
 
   return isLoggedIn && currentPage === "/" ? (

@@ -28,12 +28,18 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 import { getSearchResults } from "../../utils/NewsApi";
 import { register, signIn, getContent } from "../../utils/auth";
+import {
+  getSavedArticles,
+  addSavedArticle,
+  removeSavedArticle,
+} from "../../utils/MainApi";
 
 function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [savedArticles, setSavedArticles] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -49,6 +55,25 @@ function App() {
   useEffect(() => {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      getContent(jwt)
+        .then((res) => {
+          if (res) {
+            console.log(res);
+            setCurrentUser(res);
+            setIsLoggedIn(true);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, []);
+
+  console.log(currentUser);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -157,7 +182,6 @@ function App() {
     setIsLoading(true);
     getSearchResults(keyword)
       .then((res) => {
-        console.log(res);
         setSearchResults(res.articles);
         setHasSearched(true);
         setIsLoading(false);
@@ -167,6 +191,15 @@ function App() {
         setIsLoading(false);
         setServerError(true);
       });
+  };
+
+  const handleSaveArticle = (values) => {
+    console.log(values);
+    addSavedArticle(values)
+      .then((savedArticle) => {
+        console.log(savedArticle);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -186,6 +219,7 @@ function App() {
                       handleSearch={handleSearch}
                       isLoading={isLoading}
                       serverError={serverError}
+                      onSaveArticle={handleSaveArticle}
                     />
                   </Route>
                   <ProtectedRoute path="/saved-news">

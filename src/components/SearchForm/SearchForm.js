@@ -17,7 +17,6 @@ const SearchForm = ({ handleSearch }) => {
   };
 
   const handleSearchSubmit = () => {
-    console.log(keyword);
     handleSearch({ keyword });
   };
 
