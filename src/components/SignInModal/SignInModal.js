@@ -14,7 +14,7 @@ const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
     <ModalWithForm
       title="Sign in"
       onClose={onClose}
-      buttonText={isLoading ? "Loading..." : "Sign up"}
+      buttonText={isLoading ? "Loading..." : "Sign in"}
       altButtonText="Sign up"
       onAltClick={onAltClick}
       onSubmit={handleSubmit}
