@@ -18,21 +18,29 @@ export const getSavedArticles = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer: ${token}`,
     },
   }).then(checkResponse);
 };
 
 /* ------------------------ POST new article request ------------------------ */
 
-export const addSavedArticle = (article, token) => {
+export const addSavedArticle = (newsData, keyword, token) => {
   return fetch(`${baseUrl}/articles`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer: ${token}`,
     },
-    body: JSON.stringify(article),
+    body: JSON.stringify({
+      title: newsData.title,
+      text: newsData.description,
+      date: newsData.publishedAt,
+      source: newsData.source.name,
+      link: newsData.url,
+      image: newsData.urlToImage,
+      keyword: keyword,
+    }),
   }).then(checkResponse);
 };
 
@@ -43,7 +51,7 @@ export const removeSavedArticle = (selectedArticle, token) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer: ${token}`,
     },
   }).then(checkResponse);
 };
