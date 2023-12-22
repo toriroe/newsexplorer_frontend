@@ -3,6 +3,7 @@ import defaultCardImage from "../../images/header-image.png";
 import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { KeywordContext } from "../../contexts/KeywordContext";
+import { SavedArticlesContext } from "../../contexts/SavedArticles";
 import { useContext, useState } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -10,9 +11,9 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
   const { keyword } = useContext(KeywordContext);
+  const { savedArticles } = useContext(SavedArticlesContext);
 
   const [isHovered, setIsHovered] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const location = useLocation();
 
@@ -26,16 +27,8 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
     year: "numeric",
   });
 
-  const changeBookmarkImage = () => {
-    if (isBookmarked) {
-      return setIsBookmarked(false);
-    }
-    setIsBookmarked(true);
-  };
-
   const handleBookmarkClick = () => {
     const token = localStorage.getItem("jwt");
-    changeBookmarkImage();
     onSaveArticle({ newsData, keyword, token });
   };
 
@@ -82,7 +75,11 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
     <div className="card">
       <button
         className={`card__button-bookmark ${
-          isBookmarked ? "card__button-bookmark_marked" : ""
+          savedArticles.some(
+            (savedArticle) => savedArticle.link === newsData.url
+          )
+            ? "card__button-bookmark_marked"
+            : ""
         }`}
         onClick={handleBookmarkClick}
       />
