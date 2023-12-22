@@ -4,7 +4,7 @@ import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { KeywordContext } from "../../contexts/KeywordContext";
 import { SavedArticlesContext } from "../../contexts/SavedArticles";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
@@ -17,7 +17,9 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
 
   const location = useLocation();
 
-  setCurrentPage(location.pathname);
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location.pathname]);
 
   const formattedDate = new Date(
     newsData.publishedAt || newsData.date

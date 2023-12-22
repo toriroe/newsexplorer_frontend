@@ -155,6 +155,7 @@ function App() {
     setIsSubmitting(true);
     register(values)
       .then((user) => {
+        setIsLoggedIn(true);
         setCurrentUser(user);
         localStorage.setItem("jwt", user.token);
         handleCloseModal();
@@ -197,8 +198,6 @@ function App() {
       });
     }
   };
-
-  console.log(savedArticles);
 
   const handleRemoveArticle = ({ newsData, token }) => {
     removeSavedArticle(newsData, token)
