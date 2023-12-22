@@ -235,6 +235,8 @@ function App() {
       });
   };
 
+  console.log(savedArticles);
+
   return (
     <>
       <CurrentPageContext.Provider value={{ currentPage, activeModal }}>
