@@ -65,7 +65,6 @@ function App() {
       getContent(jwt)
         .then((res) => {
           if (res) {
-            console.log(res);
             setCurrentUser(res);
             setIsLoggedIn(true);
           }
@@ -199,6 +198,8 @@ function App() {
     }
   };
 
+  console.log(savedArticles);
+
   const handleRemoveArticle = ({ newsData, token }) => {
     removeSavedArticle(newsData, token)
       .then(() => {
@@ -245,8 +246,6 @@ function App() {
         setServerError(true);
       });
   };
-
-  console.log(savedArticles);
 
   return (
     <>
