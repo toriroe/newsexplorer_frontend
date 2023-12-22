@@ -23,6 +23,7 @@ import { MobileMenuContext } from "../../contexts/MobileMenuContext";
 import { HasSearchedContext } from "../../contexts/HasSearchedContext";
 import { SearchResultsContext } from "../../contexts/SearchResultsContext";
 import { KeywordContext } from "../../contexts/KeywordContext";
+import { SavedArticlesContext } from "../../contexts/SavedArticles";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 /* ------------------------------ Other Imports ----------------------------- */
@@ -68,6 +69,11 @@ function App() {
             setCurrentUser(res);
             setIsLoggedIn(true);
           }
+        })
+        .then(() => {
+          getSavedArticles(jwt).then((articles) => {
+            setSavedArticles(articles);
+          });
         })
         .catch((err) => {
           console.error(err);
@@ -191,6 +197,8 @@ function App() {
     }
   };
 
+  const handleRemoveArticle = () => {};
+
   /* ----------------------------- Other handlers ----------------------------- */
 
   const handleAltClick = () => {
@@ -233,50 +241,58 @@ function App() {
         <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
           <HasSearchedContext.Provider value={{ hasSearched }}>
             <SearchResultsContext.Provider value={{ searchResults }}>
-              <MobileMenuContext.Provider
-                value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
+              <SavedArticlesContext.Provider
+                value={{ savedArticles, setSavedArticles }}
               >
-                <KeywordContext.Provider value={{ keyword, setKeyword }}>
-                  <Switch>
-                    <Route exact path="/">
-                      <Main
-                        onSignIn={handleSignInModal}
-                        onSignOut={handleSignOut}
-                        handleSearch={handleSearch}
-                        isLoading={isLoading}
-                        serverError={serverError}
-                        onSaveArticle={handleSaveArticle}
+                <MobileMenuContext.Provider
+                  value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
+                >
+                  <KeywordContext.Provider value={{ keyword, setKeyword }}>
+                    <Switch>
+                      <Route exact path="/">
+                        <Main
+                          onSignIn={handleSignInModal}
+                          onSignOut={handleSignOut}
+                          handleSearch={handleSearch}
+                          isLoading={isLoading}
+                          serverError={serverError}
+                          onSaveArticle={handleSaveArticle}
+                          onRemoveArticle={handleRemoveArticle}
+                        />
+                      </Route>
+                      <ProtectedRoute path="/saved-news">
+                        <SavedNews
+                          onSignOut={handleSignOut}
+                          onRemoveArticle={handleRemoveArticle}
+                        />
+                      </ProtectedRoute>
+                    </Switch>
+                    <Footer />
+                    {activeModal === "signin" && (
+                      <SignInModal
+                        onClose={handleCloseModal}
+                        onAltClick={handleAltClick}
+                        onSignIn={handleSignIn}
+                        isLoading={isSubmitting}
                       />
-                    </Route>
-                    <ProtectedRoute path="/saved-news">
-                      <SavedNews onSignOut={handleSignOut} />
-                    </ProtectedRoute>
-                  </Switch>
-                  <Footer />
-                  {activeModal === "signin" && (
-                    <SignInModal
-                      onClose={handleCloseModal}
-                      onAltClick={handleAltClick}
-                      onSignIn={handleSignIn}
-                      isLoading={isSubmitting}
-                    />
-                  )}
-                  {activeModal === "register" && (
-                    <RegisterModal
-                      onClose={handleCloseModal}
-                      onAltClick={handleAltClick}
-                      onRegister={handleRegister}
-                      isLoading={isSubmitting}
-                    />
-                  )}
-                  {activeModal === "success" && (
-                    <SuccessModal
-                      onClose={handleCloseModal}
-                      onAltClick={handleAltClick}
-                    />
-                  )}
-                </KeywordContext.Provider>
-              </MobileMenuContext.Provider>
+                    )}
+                    {activeModal === "register" && (
+                      <RegisterModal
+                        onClose={handleCloseModal}
+                        onAltClick={handleAltClick}
+                        onRegister={handleRegister}
+                        isLoading={isSubmitting}
+                      />
+                    )}
+                    {activeModal === "success" && (
+                      <SuccessModal
+                        onClose={handleCloseModal}
+                        onAltClick={handleAltClick}
+                      />
+                    )}
+                  </KeywordContext.Provider>
+                </MobileMenuContext.Provider>
+              </SavedArticlesContext.Provider>
             </SearchResultsContext.Provider>
           </HasSearchedContext.Provider>
         </CurrentUserContext.Provider>

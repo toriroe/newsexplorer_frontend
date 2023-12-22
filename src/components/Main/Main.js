@@ -16,6 +16,7 @@ const Main = ({
   isLoading,
   serverError,
   onSaveArticle,
+  onRemoveArticle,
 }) => {
   const { hasSearched } = useContext(HasSearchedContext);
   const { searchResults } = useContext(SearchResultsContext);
@@ -30,7 +31,10 @@ const Main = ({
       <section className="content">
         <div className="content__results">
           {hasSearched && searchResults.length > 0 ? (
-            <NewsCardList onSaveArticle={onSaveArticle} />
+            <NewsCardList
+              onSaveArticle={onSaveArticle}
+              onRemoveArticle={onRemoveArticle}
+            />
           ) : hasSearched && searchResults.length === 0 ? (
             <NoResults />
           ) : isLoading ? (

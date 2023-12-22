@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { KeywordContext } from "../../contexts/KeywordContext";
 import { useContext, useState } from "react";
 
-const NewsCard = ({ newsData, onSaveArticle }) => {
+const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
   const { currentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
   const { keyword } = useContext(KeywordContext);
@@ -13,14 +13,13 @@ const NewsCard = ({ newsData, onSaveArticle }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
 
-  const formattedDate = new Date(newsData.publishedAt).toLocaleString(
-    "default",
-    {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }
-  );
+  const formattedDate = new Date(
+    newsData.publishedAt || newsData.date
+  ).toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
   const changeBookmarkImage = () => {
     if (isBookmarked) {
@@ -35,31 +34,14 @@ const NewsCard = ({ newsData, onSaveArticle }) => {
     onSaveArticle({ newsData, keyword, token });
   };
 
-  return isLoggedIn && currentPage === "/" ? (
+  const handleRemoveClick = () => {
+    const token = localStorage.getItem("jwt");
+    onRemoveArticle({ newsData, token });
+  };
+
+  return isLoggedIn && currentPage === "/saved-news" ? (
     <div className="card">
-      <button
-        className={`card__button-bookmark ${
-          isBookmarked ? "card__button-bookmark_marked" : ""
-        }`}
-        onClick={handleBookmarkClick}
-      />
-      <img
-        className="card__image"
-        src={newsData.urlToImage || defaultCardImage}
-        alt={newsData.url}
-      />
-      <div className="card__description">
-        <div className="card__description-container">
-          <p className="card__date">{formattedDate}</p>
-          <h3 className="card__title">{newsData.title}</h3>
-          <p className="card__text">{newsData.description}</p>
-        </div>
-        <p className="card__source">{newsData.source.name.toUpperCase()}</p>
-      </div>
-    </div>
-  ) : isLoggedIn && currentPage === "/saved-news" ? (
-    <div className="card">
-      <div className="card__keyword">Nature</div>
+      <div className="card__keyword">{newsData.keyword}</div>
       <div
         className={`card__popup-text ${
           isHovered ? "" : "card__popup-text_hidden"
@@ -69,12 +51,35 @@ const NewsCard = ({ newsData, onSaveArticle }) => {
       </div>
       <button
         className="card__button-delete"
+        onClick={handleRemoveClick}
         onMouseEnter={() => {
           setIsHovered(true);
         }}
         onMouseLeave={() => {
           setIsHovered(false);
         }}
+      />
+      <img
+        className="card__image"
+        src={newsData.image || defaultCardImage}
+        alt={newsData.link}
+      />
+      <div className="card__description">
+        <div className="card__description-container">
+          <p className="card__date">{formattedDate}</p>
+          <h3 className="card__title">{newsData.title}</h3>
+          <p className="card__text">{newsData.text}</p>
+        </div>
+        <p className="card__source">{newsData.source}</p>
+      </div>
+    </div>
+  ) : isLoggedIn && currentPage === "/" ? (
+    <div className="card">
+      <button
+        className={`card__button-bookmark ${
+          isBookmarked ? "card__button-bookmark_marked" : ""
+        }`}
+        onClick={handleBookmarkClick}
       />
       <img
         className="card__image"
