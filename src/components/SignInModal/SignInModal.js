@@ -21,7 +21,7 @@ const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
       isDisabled={!isValid}
     >
       <div className="modal__form-content">
-        <label>
+        <label className="modal__input">
           <p className="modal__input-title">Email</p>
           <input
             className="modal__form-input"
@@ -33,9 +33,12 @@ const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
             value={values.email}
             onChange={handleChange}
           />
+          <span className="modal__error">
+            {errors.email} {""}
+          </span>
         </label>
-        <span className="modal__error">{errors.email}</span>
-        <label>
+
+        <label className="modal__input">
           <p className="modal__input-title">Password</p>
           <input
             className="modal__form-input"
@@ -47,9 +50,9 @@ const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
             value={values.password}
             onChange={handleChange}
           />
+          <span className="modal__error">{errors.password}</span>
         </label>
       </div>
-      <span className="modal__error">{errors.password}</span>
     </ModalWithForm>
   );
 };

@@ -1,7 +1,13 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormWithValidation } from "../UseForm/useForm";
 
-const RegisterModal = ({ onClose, onRegister, onAltClick, isLoading }) => {
+const RegisterModal = ({
+  onClose,
+  onRegister,
+  onAltClick,
+  isLoading,
+  serverError,
+}) => {
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation({ name: "", email: "", password: "" });
 
@@ -22,7 +28,7 @@ const RegisterModal = ({ onClose, onRegister, onAltClick, isLoading }) => {
       isDisabled={!isValid}
     >
       <div className="modal__form-content">
-        <label>
+        <label className="modal__input">
           <p className="modal__input-title">Email</p>
           <input
             className="modal__form-input"
@@ -33,9 +39,10 @@ const RegisterModal = ({ onClose, onRegister, onAltClick, isLoading }) => {
             value={values.email}
             onChange={handleChange}
           />
+          <span className="modal__error">{errors.email}</span>
         </label>
-        <span className="modal__error">{errors.email}</span>
-        <label>
+
+        <label className="modal__input">
           <p className="modal__input-title">Password</p>
           <input
             className="modal__form-input"
@@ -46,12 +53,13 @@ const RegisterModal = ({ onClose, onRegister, onAltClick, isLoading }) => {
             value={values.password}
             onChange={handleChange}
           />
+          <span className="modal__error">{errors.password}</span>
         </label>
-        <span className="modal__error">{errors.password}</span>
-        <label>
+
+        <label className="modal__input">
           <p className="modal__input-title">Username</p>
           <input
-            className="modal__form-input"
+            className="modal__form-input "
             type="text"
             name="name"
             minLength="1"
@@ -61,8 +69,14 @@ const RegisterModal = ({ onClose, onRegister, onAltClick, isLoading }) => {
             value={values.name}
             onChange={handleChange}
           />
+          <span className="modal__error">{errors.name}</span>
         </label>
-        <span className="modal__error">{errors.name}</span>
+
+        {serverError && (
+          <span className="modal__error-unavailable">
+            This email is not available
+          </span>
+        )}
       </div>
     </ModalWithForm>
   );

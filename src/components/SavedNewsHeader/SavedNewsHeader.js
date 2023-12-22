@@ -13,7 +13,6 @@ const SavedNewsHeader = ({ onSignOut }) => {
   );
 
   const keywordArray = userArticles.map((article) => article.keyword);
-  console.log(keywordArray);
 
   const getKeywordString = (keywords) => {
     if (keywordArray.length === 1) {

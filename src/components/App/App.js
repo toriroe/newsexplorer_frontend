@@ -49,6 +49,7 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchError, setSearchError] = useState(false);
   const [serverError, setServerError] = useState(false);
 
   const location = useLocation();
@@ -155,15 +156,21 @@ function App() {
     setIsSubmitting(true);
     register(values)
       .then((user) => {
-        setIsLoggedIn(true);
-        setCurrentUser(user);
-        localStorage.setItem("jwt", user.token);
-        handleCloseModal();
+        if (user) {
+          setIsLoggedIn(true);
+          setCurrentUser(user);
+          localStorage.setItem("jwt", user.token);
+          handleCloseModal();
+          setServerError(false);
+        }
       })
       .catch((err) => {
         console.error(err);
+        setServerError(true);
       })
-      .finally(() => setIsSubmitting(false));
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   /* ---------------------------- Article handlers ---------------------------- */
@@ -183,12 +190,10 @@ function App() {
         .catch((err) => console.error(err));
     } else if (savedArticles.some((article) => article.link === newsData.url)) {
       removeSavedArticle(newsData, token).then(() => {
-        const updatedNewsArticles = savedArticles.filter(
+        const unsaveNewsArticles = savedArticles.filter(
           (article) => article._id !== newsData._id
         );
-        setSavedArticles(updatedNewsArticles).catch((err) =>
-          console.error(err)
-        );
+        setSavedArticles(unsaveNewsArticles).catch((err) => console.error(err));
 
         const newArticle = { ...newsData, _id: "" };
         const newSearchResults = searchResults.map((article) =>
@@ -202,10 +207,10 @@ function App() {
   const handleRemoveArticle = ({ newsData, token }) => {
     removeSavedArticle(newsData, token)
       .then(() => {
-        const updatedArticles = savedArticles.filter(
+        const unsaveNewsArticles = savedArticles.filter(
           (article) => article._id !== newsData._id
         );
-        setSavedArticles(updatedArticles);
+        setSavedArticles(unsaveNewsArticles);
       })
       .catch((err) => console.error(err));
   };
@@ -238,11 +243,12 @@ function App() {
         setSearchResults(res.articles);
         setHasSearched(true);
         setIsLoading(false);
+        setSearchError(false);
       })
       .catch((err) => {
         console.error(err);
         setIsLoading(false);
-        setServerError(true);
+        setSearchError(true);
       });
   };
 
@@ -268,7 +274,7 @@ function App() {
                           onSignOut={handleSignOut}
                           handleSearch={handleSearch}
                           isLoading={isLoading}
-                          serverError={serverError}
+                          searchError={searchError}
                           onSaveArticle={handleSaveArticle}
                           onRemoveArticle={handleRemoveArticle}
                         />
@@ -295,6 +301,7 @@ function App() {
                         onAltClick={handleAltClick}
                         onRegister={handleRegister}
                         isLoading={isSubmitting}
+                        serverError={serverError}
                       />
                     )}
                     {activeModal === "success" && (

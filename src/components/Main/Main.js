@@ -14,7 +14,7 @@ const Main = ({
   onSignOut,
   handleSearch,
   isLoading,
-  serverError,
+  searchError,
   onSaveArticle,
   onRemoveArticle,
 }) => {
@@ -39,7 +39,7 @@ const Main = ({
             <NoResults />
           ) : isLoading ? (
             <Preloader />
-          ) : serverError === true ? (
+          ) : searchError === true ? (
             <SearchError />
           ) : (
             ""

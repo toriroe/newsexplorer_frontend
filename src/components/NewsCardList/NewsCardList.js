@@ -11,6 +11,8 @@ const NewsCardList = ({ onSaveArticle, onRemoveArticle }) => {
     setCardsDisplayed(cardsDisplayed + 3);
   };
 
+  console.log(searchResults);
+
   return (
     <section className="newscards">
       <h2 className="newscards__title">Search Results</h2>
