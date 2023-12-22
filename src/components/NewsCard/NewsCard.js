@@ -4,14 +4,19 @@ import { CurrentPageContext } from "../../contexts/CurrentPageContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { KeywordContext } from "../../contexts/KeywordContext";
 import { useContext, useState } from "react";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
-  const { currentPage } = useContext(CurrentPageContext);
+  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
   const { keyword } = useContext(KeywordContext);
 
   const [isHovered, setIsHovered] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const location = useLocation();
+
+  setCurrentPage(location.pathname);
 
   const formattedDate = new Date(
     newsData.publishedAt || newsData.date
@@ -92,7 +97,7 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
           <h3 className="card__title">{newsData.title}</h3>
           <p className="card__text">{newsData.description}</p>
         </div>
-        <p className="card__source">{newsData.source.name.toUpperCase()}</p>
+        <p className="card__source">{newsData?.source?.name?.toUpperCase()}</p>
       </div>
     </div>
   ) : (

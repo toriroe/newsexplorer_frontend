@@ -186,18 +186,29 @@ function App() {
         const updatedNewsArticles = savedArticles.filter(
           (article) => article._id !== newsData._id
         );
-        setSavedArticles(updatedNewsArticles);
+        setSavedArticles(updatedNewsArticles).catch((err) =>
+          console.error(err)
+        );
 
         const newArticle = { ...newsData, _id: "" };
         const newSearchResults = searchResults.map((article) =>
           article.url === newsData.url ? newArticle : article
         );
-        setSearchResults(newSearchResults);
+        setSearchResults(newSearchResults).catch((err) => console.error(err));
       });
     }
   };
 
-  const handleRemoveArticle = () => {};
+  const handleRemoveArticle = ({ newsData, token }) => {
+    removeSavedArticle(newsData, token)
+      .then(() => {
+        const updatedArticles = savedArticles.filter(
+          (article) => article._id !== newsData._id
+        );
+        setSavedArticles(updatedArticles);
+      })
+      .catch((err) => console.error(err));
+  };
 
   /* ----------------------------- Other handlers ----------------------------- */
 
@@ -239,7 +250,9 @@ function App() {
 
   return (
     <>
-      <CurrentPageContext.Provider value={{ currentPage, activeModal }}>
+      <CurrentPageContext.Provider
+        value={{ currentPage, setCurrentPage, activeModal }}
+      >
         <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
           <HasSearchedContext.Provider value={{ hasSearched }}>
             <SearchResultsContext.Provider value={{ searchResults }}>
