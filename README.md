@@ -5,7 +5,6 @@
 - About the project
 - Technologies Used
 - Links
-- Potential Improvements
 
 ## About the project
 
