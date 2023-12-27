@@ -10,7 +10,7 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 
 const Nav = ({ onSignIn, onSignOut }) => {
   const { currentPage, activeModal } = useContext(CurrentPageContext);
-  const { isLoggedIn } = useContext(CurrentUserContext);
+  const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
   const { mobileMenuOpen, openMobileMenu, closeMobileMenu } =
     useContext(MobileMenuContext);
 
@@ -48,7 +48,7 @@ const Nav = ({ onSignIn, onSignOut }) => {
           Saved articles
         </NavLink>
         <button className="nav__button-loggedin" onClick={onSignOut}>
-          <p className="nav__username-loggedin">Username</p>
+          <p className="nav__username-loggedin">{currentUser.name}</p>
           <img src={signOutWhite} alt="logout" className="nav__logout" />
         </button>
       </nav>
@@ -84,7 +84,7 @@ const Nav = ({ onSignIn, onSignOut }) => {
           Saved articles
         </NavLink>
         <button className="nav-savednews__button" onClick={onSignOut}>
-          <p className="nav-savednews__username">Username</p>
+          <p className="nav-savednews__username">{currentUser.name}</p>
           <img
             src={signOutDark}
             alt="logout"

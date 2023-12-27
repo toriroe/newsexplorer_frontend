@@ -24,3 +24,8 @@ export const previousWeek =
   (previousWeekUnformatted.getMonth() + 1).toString().padStart(2, "0") +
   "-" +
   previousWeekUnformatted.getDate().toString().padStart(2, "0");
+
+export const newsApiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://nomoreparties.co/news"
+    : "https://newsapi.org";

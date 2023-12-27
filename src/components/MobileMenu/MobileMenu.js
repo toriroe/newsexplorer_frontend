@@ -7,7 +7,7 @@ import signOutDark from "../../images/logout-icon-dark.svg";
 import signOutWhite from "../../images/logout-icon-white.svg";
 
 const MobileMenu = ({ onSignIn, onSignOut }) => {
-  const { isLoggedIn } = useContext(CurrentUserContext);
+  const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
   const { currentPage } = useContext(CurrentPageContext);
 
   return isLoggedIn && currentPage === "/" ? (
@@ -22,7 +22,7 @@ const MobileMenu = ({ onSignIn, onSignOut }) => {
           </NavLink>
         </nav>
         <button className="mobile__button-loggedin" onClick={onSignOut}>
-          <p className="mobile__username-loggedin">Username</p>
+          <p className="mobile__username-loggedin">{currentUser.name}</p>
           <img src={signOutWhite} alt="logout" className="mobile__logout" />
         </button>
       </div>
@@ -39,7 +39,7 @@ const MobileMenu = ({ onSignIn, onSignOut }) => {
           </NavLink>
         </nav>
         <button className="mobile__button-savednews" onClick={onSignOut}>
-          <p className="mobile__username-savednews">Username</p>
+          <p className="mobile__username-savednews">{currentUser.name}</p>
           <img
             src={signOutDark}
             alt="logout"

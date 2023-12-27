@@ -14,7 +14,9 @@ const Main = ({
   onSignOut,
   handleSearch,
   isLoading,
-  serverError,
+  searchError,
+  onSaveArticle,
+  onRemoveArticle,
 }) => {
   const { hasSearched } = useContext(HasSearchedContext);
   const { searchResults } = useContext(SearchResultsContext);
@@ -29,12 +31,15 @@ const Main = ({
       <section className="content">
         <div className="content__results">
           {hasSearched && searchResults.length > 0 ? (
-            <NewsCardList />
+            <NewsCardList
+              onSaveArticle={onSaveArticle}
+              onRemoveArticle={onRemoveArticle}
+            />
           ) : hasSearched && searchResults.length === 0 ? (
             <NoResults />
           ) : isLoading ? (
             <Preloader />
-          ) : serverError === true ? (
+          ) : searchError === true ? (
             <SearchError />
           ) : (
             ""

@@ -9,6 +9,7 @@ const ModalWithForm = ({
   onSubmit,
   altButtonText,
   onAltClick,
+  isDisabled,
 }) => {
   return (
     <div className={`modal modal_type_${name}`}>
@@ -23,8 +24,11 @@ const ModalWithForm = ({
           {children}
 
           <button
-            className="modal__button-submit modal__button-submit_disabled"
+            className={`modal__button-submit ${
+              isDisabled === true ? "modal__button-submit_disabled" : ""
+            }`}
             type="submit"
+            disabled={isDisabled}
           >
             {buttonText}
           </button>
