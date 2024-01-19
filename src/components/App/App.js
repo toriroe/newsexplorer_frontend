@@ -118,9 +118,9 @@ function App() {
     setActiveModal("register");
   };
 
-  // const handleSuccessModal = () => {
-  //   setActiveModal("success");
-  // };
+  const handleSuccessModal = () => {
+    setActiveModal("success");
+  };
 
   const handleCloseModal = () => {
     setActiveModal("");
@@ -157,11 +157,9 @@ function App() {
     register(values)
       .then((user) => {
         if (user) {
-          setIsLoggedIn(true);
-          setCurrentUser(user);
-          localStorage.setItem("jwt", user.token);
           handleCloseModal();
           setServerError(false);
+          handleSuccessModal();
         }
       })
       .catch((err) => {
@@ -307,7 +305,7 @@ function App() {
                     {activeModal === "success" && (
                       <SuccessModal
                         onClose={handleCloseModal}
-                        onAltClick={handleAltClick}
+                        onAltClick={handleSignInModal}
                       />
                     )}
                   </KeywordContext.Provider>
