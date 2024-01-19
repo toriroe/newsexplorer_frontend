@@ -39,96 +39,80 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
     onRemoveArticle({ newsData, token });
   };
 
-  return isLoggedIn && currentPage === "/saved-news" ? (
+  console.log({ newsData: newsData });
+
+  return (
     <div className="card">
-      <div className="card__keyword">{newsData.keyword}</div>
-      <div
-        className={`card__popup-text ${
-          isHovered ? "" : "card__popup-text_hidden"
-        }`}
-      >
-        Remove from saved
-      </div>
-      <button
-        className="card__button-delete"
-        onClick={handleRemoveClick}
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-      />
+      {currentPage === "/saved-news" && (
+        <>
+          <div className="card__keyword">{newsData.keyword}</div>
+          <div
+            className={`card__popup-text ${
+              isHovered ? "" : "card__popup-text_hidden"
+            }`}
+          >
+            Remove from saved
+          </div>
+          <button
+            className="card__button-delete"
+            onClick={handleRemoveClick}
+            onMouseEnter={() => {
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsHovered(false);
+            }}
+          />
+        </>
+      )}
+      {isLoggedIn && currentPage === "/" ? (
+        <button
+          className={`card__button-bookmark ${
+            savedArticles.some(
+              (savedArticle) => savedArticle.link === newsData.url
+            )
+              ? "card__button-bookmark_marked"
+              : ""
+          }`}
+          onClick={handleBookmarkClick}
+        />
+      ) : (
+        ""
+      )}
+      {!isLoggedIn && (
+        <>
+          <div
+            className={`card__popup-text ${
+              isHovered ? "" : "card__popup-text_hidden"
+            }`}
+          >
+            Sign in to save articles
+          </div>
+          <button
+            className="card__button-bookmark"
+            onMouseEnter={() => {
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsHovered(false);
+            }}
+          />
+        </>
+      )}
       <img
         className="card__image"
-        src={newsData.image || defaultCardImage}
-        alt={newsData.link}
+        src={newsData.image || newsData.urlToImage || defaultCardImage}
+        alt={newsData.link || newsData.url}
       />
       <div className="card__description">
         <div className="card__description-container">
           <p className="card__date">{formattedDate}</p>
           <h3 className="card__title">{newsData.title}</h3>
-          <p className="card__text">{newsData.text}</p>
+          <p className="card__text">{newsData.text || newsData.description}</p>
         </div>
-        <p className="card__source">{newsData.source}</p>
-      </div>
-    </div>
-  ) : isLoggedIn && currentPage === "/" ? (
-    <div className="card">
-      <button
-        className={`card__button-bookmark ${
-          savedArticles.some(
-            (savedArticle) => savedArticle.link === newsData.url
-          )
-            ? "card__button-bookmark_marked"
-            : ""
-        }`}
-        onClick={handleBookmarkClick}
-      />
-      <img
-        className="card__image"
-        src={newsData.urlToImage || defaultCardImage}
-        alt={newsData.url}
-      />
-      <div className="card__description">
-        <div className="card__description-container">
-          <p className="card__date">{formattedDate}</p>
-          <h3 className="card__title">{newsData.title}</h3>
-          <p className="card__text">{newsData.description}</p>
-        </div>
-        <p className="card__source">{newsData?.source?.name?.toUpperCase()}</p>
-      </div>
-    </div>
-  ) : (
-    <div className="card">
-      <div
-        className={`card__popup-text ${
-          isHovered ? "" : "card__popup-text_hidden"
-        }`}
-      >
-        Sign in to save articles
-      </div>
-      <button
-        className="card__button-bookmark"
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-      />
-      <img
-        className="card__image"
-        src={newsData.urlToImage || defaultCardImage}
-        alt={newsData.url}
-      />
-      <div className="card__description">
-        <div className="card__description-container">
-          <p className="card__date">{formattedDate}</p>
-          <h3 className="card__title">{newsData.title}</h3>
-          <p className="card__text">{newsData.description}</p>
-        </div>
-        <p className="card__source">{newsData.source.name.toUpperCase()}</p>
+        <p className="card__source">
+          {newsData.source.name || newsData.source}
+        </p>
       </div>
     </div>
   );

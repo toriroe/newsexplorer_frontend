@@ -18,7 +18,6 @@ const SavedNewsCardList = ({ onRemoveArticle }) => {
               <NewsCard
                 newsData={article}
                 key={article.link}
-                // onSaveArticle={onSaveArticle}
                 onRemoveArticle={onRemoveArticle}
               />
             );
