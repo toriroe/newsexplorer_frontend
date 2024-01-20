@@ -44,8 +44,6 @@ const NewsCard = ({
     onRemoveArticle({ newsData, token });
   };
 
-  console.log({ newsData: newsData });
-
   return (
     <div className="card">
       {currentPage === "/saved-news" && (

@@ -165,21 +165,24 @@ function App() {
             article.url === newsData.url ? newArticle : article
           );
           setSearchResults(newSearchResults);
+          console.log(newSearchResults);
         })
         .catch((err) => console.error(err));
     } else if (savedArticles.some((article) => article.link === newsData.url)) {
-      removeSavedArticle(newsData, token).then(() => {
-        const unsaveNewsArticles = savedArticles.filter(
-          (article) => article._id !== newsData._id
-        );
-        setSavedArticles(unsaveNewsArticles).catch((err) => console.error(err));
+      removeSavedArticle(newsData, token)
+        .then(() => {
+          const unsaveNewsArticles = savedArticles.filter(
+            (article) => article._id !== newsData._id
+          );
+          setSavedArticles(unsaveNewsArticles);
 
-        const newArticle = { ...newsData, _id: "" };
-        const newSearchResults = searchResults.map((article) =>
-          article.url === newsData.url ? newArticle : article
-        );
-        setSearchResults(newSearchResults).catch((err) => console.error(err));
-      });
+          const newArticle = { ...newsData, _id: "" };
+          const newSearchResults = searchResults.map((article) =>
+            article.url === newsData.url ? newArticle : article
+          );
+          setSearchResults(newSearchResults);
+        })
+        .catch((err) => console.error(err));
     }
   };
 

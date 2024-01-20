@@ -11,12 +11,7 @@ const SearchForm = ({ handleSearch }) => {
 
   const handleError = (errors) => {};
 
-  const [keyword, setKeyword] = useState("");
-  const handleKeywordChange = (evt) => {
-    setKeyword(evt.target.value);
-  };
-
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = ({ keyword }) => {
     handleSearch({ keyword });
   };
 
@@ -32,7 +27,6 @@ const SearchForm = ({ handleSearch }) => {
         name="keyword"
         placeholder="Enter topic"
         {...register("keyword", { required: "Please enter a keyword" })}
-        onChange={handleKeywordChange}
       />
       {errors?.keyword && (
         <p className="search__form-invalid">{errors.keyword.message}</p>
