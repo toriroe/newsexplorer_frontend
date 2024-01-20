@@ -84,16 +84,13 @@ function App() {
   /* ----------------------------- Modal Handlers ----------------------------- */
   const handleSubmit = (request) => {
     setIsLoading(true);
+
     request()
-      .then(() => {
-        if (activeModal === "register") {
-          handleSuccessModal();
-        } else {
-          handleCloseModal();
-        }
-      })
+      .then(handleCloseModal)
       .catch(console.error)
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleSignInModal = () => {
@@ -138,18 +135,22 @@ function App() {
   };
 
   const handleRegister = (values) => {
-    const makeRequest = () => {
-      return register(values)
-        .then((user) => {
-          if (user) {
-            setServerError(false);
-          }
-        })
-        .catch((err) => {
-          setServerError(true);
-        });
-    };
-    handleSubmit(makeRequest);
+    setIsLoading(true);
+    register(values)
+      .then((user) => {
+        if (user) {
+          handleCloseModal();
+          setServerError(false);
+          handleSuccessModal();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setServerError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   /* ---------------------------- Article handlers ---------------------------- */
