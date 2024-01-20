@@ -79,7 +79,7 @@ function App() {
           console.error(err);
         });
     }
-  }, []);
+  }, [isLoggedIn]);
 
   /* ----------------------------- Modal Handlers ----------------------------- */
   const handleSubmit = (request) => {
@@ -125,11 +125,18 @@ function App() {
 
   const handleSignIn = (values) => {
     const makeRequest = () => {
-      return signIn(values).then((user) => {
-        setIsLoggedIn(true);
-        setCurrentUser(user);
-        localStorage.setItem("jwt", user.token);
-      });
+      return signIn(values)
+        .then((user) => {
+          setIsLoggedIn(true);
+          setCurrentUser(user);
+          localStorage.setItem("jwt", user.token);
+          if (user.token) {
+            return getContent(user.token);
+          }
+        })
+        .then((res) => {
+          console.log(res);
+        });
     };
     handleSubmit(makeRequest);
   };
