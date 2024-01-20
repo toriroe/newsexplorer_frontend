@@ -1,5 +1,5 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useFormWithValidation } from "../UseForm/useForm";
+import { useFormWithValidation } from "../../hooks/useForm";
 
 const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
   const { values, errors, isValid, handleChange, resetForm } =
@@ -12,6 +12,7 @@ const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
 
   return (
     <ModalWithForm
+      name="signin"
       title="Sign in"
       onClose={onClose}
       buttonText={isLoading ? "Loading..." : "Sign in"}

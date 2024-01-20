@@ -17,6 +17,7 @@ const Main = ({
   searchError,
   onSaveArticle,
   onRemoveArticle,
+  handleRegisterModal,
 }) => {
   const { hasSearched } = useContext(HasSearchedContext);
   const { searchResults } = useContext(SearchResultsContext);
@@ -34,6 +35,7 @@ const Main = ({
             <NewsCardList
               onSaveArticle={onSaveArticle}
               onRemoveArticle={onRemoveArticle}
+              handleRegisterModal={handleRegisterModal}
             />
           ) : hasSearched && searchResults.length === 0 ? (
             <NoResults />

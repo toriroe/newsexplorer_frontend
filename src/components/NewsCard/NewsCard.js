@@ -7,7 +7,12 @@ import { SavedArticlesContext } from "../../contexts/SavedArticles";
 import { useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
-const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
+const NewsCard = ({
+  newsData,
+  onSaveArticle,
+  onRemoveArticle,
+  handleRegisterModal,
+}) => {
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
   const { keyword } = useContext(KeywordContext);
@@ -65,6 +70,7 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
           />
         </>
       )}
+
       {isLoggedIn && currentPage === "/" ? (
         <button
           className={`card__button-bookmark ${
@@ -90,6 +96,7 @@ const NewsCard = ({ newsData, onSaveArticle, onRemoveArticle }) => {
           </div>
           <button
             className="card__button-bookmark"
+            onClick={handleRegisterModal}
             onMouseEnter={() => {
               setIsHovered(true);
             }}

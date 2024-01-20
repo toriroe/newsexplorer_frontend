@@ -4,7 +4,11 @@ import { useContext, useState } from "react";
 import { SearchResultsContext } from "../../contexts/SearchResultsContext";
 import { HasSearchedContext } from "../../contexts/HasSearchedContext";
 
-const NewsCardList = ({ onSaveArticle, onRemoveArticle }) => {
+const NewsCardList = ({
+  onSaveArticle,
+  onRemoveArticle,
+  handleRegisterModal,
+}) => {
   const [cardsDisplayed, setCardsDisplayed] = useState(3);
   const { searchResults } = useContext(SearchResultsContext);
   const { hasSearched } = useContext(HasSearchedContext);
@@ -26,6 +30,7 @@ const NewsCardList = ({ onSaveArticle, onRemoveArticle }) => {
                   key={result.url}
                   onSaveArticle={onSaveArticle}
                   onRemoveArticle={onRemoveArticle}
+                  handleRegisterModal={handleRegisterModal}
                 />
               );
             })}

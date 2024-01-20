@@ -153,6 +153,34 @@
   margin: 0 auto;
 }
 
+/* ------------------------------ Success modal ----------------------------- */
+
+.modal__content_success {
+  padding: 43px 36px 50px;
+}
+
+.modal__title-success {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 14px;
+}
+
+.modal__button-success {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  color: #2f71e5;
+  padding: 0;
+}
+
+.modal__button-success:hover {
+  cursor: pointer;
+}
+
 /* ------------------------------ Media Queries ----------------------------- */
 
 @media screen and (max-width: 520px) {

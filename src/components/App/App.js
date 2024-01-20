@@ -40,7 +40,7 @@ function App() {
   /* ------------------------------- Use States ------------------------------- */
   const [currentPage, setCurrentPage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
   const [savedArticles, setSavedArticles] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [activeModal, setActiveModal] = useState("");
@@ -48,7 +48,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState(false);
   const [serverError, setServerError] = useState(false);
 
@@ -81,31 +81,20 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    if (!activeModal) return;
-
-    const handleEscClose = (evt) => {
-      if (evt.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-
-    const handleClickClose = (evt) => {
-      if (evt.target.classList.contains("modal")) {
-        handleCloseModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscClose);
-    document.addEventListener("click", handleClickClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-      document.removeEventListener("click", handleClickClose);
-    };
-  }, [activeModal]);
-
   /* ----------------------------- Modal Handlers ----------------------------- */
+  const handleSubmit = (request) => {
+    setIsLoading(true);
+    request()
+      .then(() => {
+        if (activeModal === "register") {
+          handleSuccessModal();
+        } else {
+          handleCloseModal();
+        }
+      })
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
+  };
 
   const handleSignInModal = () => {
     if (mobileMenuOpen) {
@@ -132,43 +121,35 @@ function App() {
     if (mobileMenuOpen) {
       closeMobileMenu();
     }
-    setCurrentUser("");
+    setCurrentUser({});
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
   };
 
   const handleSignIn = (values) => {
-    setIsSubmitting(true);
-    signIn(values)
-      .then((user) => {
+    const makeRequest = () => {
+      return signIn(values).then((user) => {
         setIsLoggedIn(true);
         setCurrentUser(user);
         localStorage.setItem("jwt", user.token);
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => setIsSubmitting(false));
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleRegister = (values) => {
-    setIsSubmitting(true);
-    register(values)
-      .then((user) => {
-        if (user) {
-          handleCloseModal();
-          setServerError(false);
-          handleSuccessModal();
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setServerError(true);
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    const makeRequest = () => {
+      return register(values)
+        .then((user) => {
+          if (user) {
+            setServerError(false);
+          }
+        })
+        .catch((err) => {
+          setServerError(true);
+        });
+    };
+    handleSubmit(makeRequest);
   };
 
   /* ---------------------------- Article handlers ---------------------------- */
@@ -235,87 +216,86 @@ function App() {
 
   const handleSearch = ({ keyword }) => {
     setKeyword(keyword);
-    setIsLoading(true);
+    setIsSearching(true);
     getSearchResults(keyword)
       .then((res) => {
         setSearchResults(res.articles);
         setHasSearched(true);
-        setIsLoading(false);
+        setIsSearching(false);
         setSearchError(false);
       })
       .catch((err) => {
         console.error(err);
-        setIsLoading(false);
+        setIsSearching(false);
         setSearchError(true);
       });
   };
 
   return (
-    <>
-      <CurrentPageContext.Provider
-        value={{ currentPage, setCurrentPage, activeModal }}
-      >
-        <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
-          <HasSearchedContext.Provider value={{ hasSearched }}>
-            <SearchResultsContext.Provider value={{ searchResults }}>
-              <SavedArticlesContext.Provider
-                value={{ savedArticles, setSavedArticles }}
+    <CurrentPageContext.Provider
+      value={{ currentPage, setCurrentPage, activeModal }}
+    >
+      <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
+        <HasSearchedContext.Provider value={{ hasSearched }}>
+          <SearchResultsContext.Provider value={{ searchResults }}>
+            <SavedArticlesContext.Provider
+              value={{ savedArticles, setSavedArticles }}
+            >
+              <MobileMenuContext.Provider
+                value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
               >
-                <MobileMenuContext.Provider
-                  value={{ mobileMenuOpen, openMobileMenu, closeMobileMenu }}
-                >
-                  <KeywordContext.Provider value={{ keyword, setKeyword }}>
-                    <Switch>
-                      <Route exact path="/">
-                        <Main
-                          onSignIn={handleSignInModal}
-                          onSignOut={handleSignOut}
-                          handleSearch={handleSearch}
-                          isLoading={isLoading}
-                          searchError={searchError}
-                          onSaveArticle={handleSaveArticle}
-                          onRemoveArticle={handleRemoveArticle}
-                        />
-                      </Route>
-                      <ProtectedRoute path="/saved-news">
-                        <SavedNews
-                          onSignOut={handleSignOut}
-                          onRemoveArticle={handleRemoveArticle}
-                        />
-                      </ProtectedRoute>
-                    </Switch>
-                    <Footer />
-                    {activeModal === "signin" && (
-                      <SignInModal
-                        onClose={handleCloseModal}
-                        onAltClick={handleAltClick}
-                        onSignIn={handleSignIn}
-                        isLoading={isSubmitting}
+                <KeywordContext.Provider value={{ keyword, setKeyword }}>
+                  <Switch>
+                    <Route exact path="/">
+                      <Main
+                        onSignIn={handleSignInModal}
+                        onSignOut={handleSignOut}
+                        handleSearch={handleSearch}
+                        isLoading={isSearching}
+                        searchError={searchError}
+                        onSaveArticle={handleSaveArticle}
+                        onRemoveArticle={handleRemoveArticle}
+                        handleRegisterModal={handleRegisterModal}
                       />
-                    )}
-                    {activeModal === "register" && (
-                      <RegisterModal
-                        onClose={handleCloseModal}
-                        onAltClick={handleAltClick}
-                        onRegister={handleRegister}
-                        isLoading={isSubmitting}
-                        serverError={serverError}
+                    </Route>
+                    <ProtectedRoute path="/saved-news">
+                      <SavedNews
+                        onSignOut={handleSignOut}
+                        onRemoveArticle={handleRemoveArticle}
                       />
-                    )}
-                    {activeModal === "success" && (
-                      <SuccessModal
-                        onClose={handleCloseModal}
-                        onAltClick={handleSignInModal}
-                      />
-                    )}
-                  </KeywordContext.Provider>
-                </MobileMenuContext.Provider>
-              </SavedArticlesContext.Provider>
-            </SearchResultsContext.Provider>
-          </HasSearchedContext.Provider>
-        </CurrentUserContext.Provider>
-      </CurrentPageContext.Provider>
-    </>
+                    </ProtectedRoute>
+                  </Switch>
+                  <Footer />
+                  {activeModal === "signin" && (
+                    <SignInModal
+                      onClose={handleCloseModal}
+                      onAltClick={handleAltClick}
+                      onSignIn={handleSignIn}
+                      isLoading={isLoading}
+                    />
+                  )}
+                  {activeModal === "register" && (
+                    <RegisterModal
+                      onClose={handleCloseModal}
+                      onAltClick={handleAltClick}
+                      onRegister={handleRegister}
+                      isLoading={isLoading}
+                      serverError={serverError}
+                    />
+                  )}
+                  {activeModal === "success" && (
+                    <SuccessModal
+                      onClose={handleCloseModal}
+                      onAltClick={handleSignInModal}
+                    />
+                  )}
+                </KeywordContext.Provider>
+              </MobileMenuContext.Provider>
+            </SavedArticlesContext.Provider>
+          </SearchResultsContext.Provider>
+        </HasSearchedContext.Provider>
+      </CurrentUserContext.Provider>
+    </CurrentPageContext.Provider>
   );
 }
 

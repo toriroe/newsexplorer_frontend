@@ -1,5 +1,5 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useFormWithValidation } from "../UseForm/useForm";
+import { useFormWithValidation } from "../../hooks/useForm";
 
 const RegisterModal = ({
   onClose,
