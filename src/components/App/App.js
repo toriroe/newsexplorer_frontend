@@ -166,7 +166,6 @@ function App() {
             article.url === newsData.url ? newArticle : article
           );
           setSearchResults(newSearchResults);
-          console.log(newSearchResults);
         })
         .catch((err) => console.error(err));
     } else if (savedArticles.some((article) => article.link === newsData.url)) {
@@ -234,6 +233,8 @@ function App() {
         setSearchError(true);
       });
   };
+
+  console.log(savedArticles);
 
   return (
     <CurrentPageContext.Provider
