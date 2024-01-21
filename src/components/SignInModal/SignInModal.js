@@ -1,7 +1,13 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormWithValidation } from "../../hooks/useForm";
 
-const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
+const SignInModal = ({
+  onClose,
+  onSignIn,
+  onAltClick,
+  isLoading,
+  serverError,
+}) => {
   const { values, errors, isValid, handleChange, resetForm } =
     useFormWithValidation({ email: "", password: "" });
 
@@ -53,6 +59,11 @@ const SignInModal = ({ onClose, onSignIn, onAltClick, isLoading }) => {
           />
           <span className="modal__error">{errors.password}</span>
         </label>
+        {serverError && (
+          <span className="modal__error-unavailable">
+            Incorrect email or password
+          </span>
+        )}
       </div>
     </ModalWithForm>
   );

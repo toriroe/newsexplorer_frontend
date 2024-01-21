@@ -86,8 +86,18 @@ function App() {
     setIsLoading(true);
 
     request()
-      .then(handleCloseModal)
-      .catch(console.error)
+      .then(() => {
+        if (activeModal === "register") {
+          setServerError(false);
+        } else {
+          setServerError(false);
+          handleCloseModal();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setServerError(true);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -110,6 +120,7 @@ function App() {
 
   const handleCloseModal = () => {
     setActiveModal("");
+    setServerError(false);
   };
 
   /* ----------------------------- Authorization Handlers ----------------------------- */
@@ -125,39 +136,24 @@ function App() {
 
   const handleSignIn = (values) => {
     const makeRequest = () => {
-      return signIn(values)
-        .then((user) => {
-          setIsLoggedIn(true);
-          setCurrentUser(user);
-          localStorage.setItem("jwt", user.token);
-          if (user.token) {
-            return getContent(user.token);
-          }
-        })
-        .then((res) => {
-          console.log(res);
-        });
+      return signIn(values).then((user) => {
+        setIsLoggedIn(true);
+        setCurrentUser(user);
+        localStorage.setItem("jwt", user.token);
+      });
     };
     handleSubmit(makeRequest);
   };
 
   const handleRegister = (values) => {
-    setIsLoading(true);
-    register(values)
-      .then((user) => {
+    const makeRequest = () => {
+      return register(values).then((user) => {
         if (user) {
-          handleCloseModal();
-          setServerError(false);
           handleSuccessModal();
         }
-      })
-      .catch((err) => {
-        console.error(err);
-        setServerError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
+    };
+    handleSubmit(makeRequest);
   };
 
   /* ---------------------------- Article handlers ---------------------------- */
@@ -241,8 +237,6 @@ function App() {
       });
   };
 
-  console.log(savedArticles);
-
   return (
     <CurrentPageContext.Provider
       value={{ currentPage, setCurrentPage, activeModal }}
@@ -284,6 +278,7 @@ function App() {
                       onAltClick={handleAltClick}
                       onSignIn={handleSignIn}
                       isLoading={isLoading}
+                      serverError={serverError}
                     />
                   )}
                   {activeModal === "register" && (
