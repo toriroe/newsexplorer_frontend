@@ -1,5 +1,4 @@
 import "./SearchForm.css";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const SearchForm = ({ handleSearch }) => {
@@ -9,23 +8,12 @@ const SearchForm = ({ handleSearch }) => {
     formState: { errors },
   } = useForm();
 
-  const handleError = (errors) => {};
-
-  const [keyword, setKeyword] = useState("");
-  const handleKeywordChange = (evt) => {
-    setKeyword(evt.target.value);
-  };
-
-  const handleSearchSubmit = () => {
-    console.log(keyword);
+  const handleSearchSubmit = ({ keyword }) => {
     handleSearch({ keyword });
   };
 
   return (
-    <form
-      className="search__form"
-      onSubmit={handleSubmit(handleSearchSubmit, handleError)}
-    >
+    <form className="search__form" onSubmit={handleSubmit(handleSearchSubmit)}>
       <input
         type="text"
         className="search__form-input"
@@ -33,7 +21,6 @@ const SearchForm = ({ handleSearch }) => {
         name="keyword"
         placeholder="Enter topic"
         {...register("keyword", { required: "Please enter a keyword" })}
-        onChange={handleKeywordChange}
       />
       {errors?.keyword && (
         <p className="search__form-invalid">{errors.keyword.message}</p>
